@@ -29,7 +29,7 @@ const NavBar = (props) => {
 			<LinkContainer to="/sign-up">
 				<NavItem>New Card</NavItem>
 			</LinkContainer>
-			<LinkContainer to="/sign-up">
+			<LinkContainer to={`/${props.user.id}/profile`}>
 				<NavItem>Profile</NavItem>
 			</LinkContainer>
 			<NavItem onClick={handleLogOut}>Log Out</NavItem>
