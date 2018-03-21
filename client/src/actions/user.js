@@ -43,6 +43,11 @@ export const signUpUser = (user, history) => {
 			dispatch(loadUser(response.data))
 			.then(history.push("/"));
 		})
-		.catch((error) => {console.log(error) })
+		.catch((error) => {
+			if(error.response)
+				dispatch(showError(error.response.data.error[0]))
+			else
+				console.log(error);
+		 })
 	}
 }
