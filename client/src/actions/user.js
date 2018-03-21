@@ -35,3 +35,14 @@ export const logInUser = (user, history) => {
 		.catch((error) => { console.log(error) })
 	}
 }
+
+export const signUpUser = (user, history) => {
+	return dispatch => {
+		axios.post(`${url}/users`, { user })
+		.then(response => { 
+			dispatch(loadUser(response.data))
+			.then(history.push("/"));
+		})
+		.catch((error) => {console.log(error) })
+	}
+}

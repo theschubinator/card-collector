@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { logInUser } from '../../actions/user';
+import { logInUser, signUpUser } from '../../actions/user';
 import { updateForm, showError, clearFormData } from '../../actions/loginForm';
 
 class Form extends Component {
@@ -10,8 +10,10 @@ class Form extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		if(!this.props.newUser || (this.props.newUser && this.props.loginForm.password === this.props.loginForm.password_confirmation)) {
+		if(!this.props.newUser) {
 			this.props.logInUser(this.props.loginForm, this.props.history);
+		} else if((this.props.newUser && this.props.loginForm.password === this.props.loginForm.password_confirmation)) {
+			this.props.signUpUser(this.props.loginForm, this.props.history);
 		} else {
 			this.props.showError('Password and Password Confirmation do not match');
 		}
@@ -67,4 +69,4 @@ const mapStateToProps = (state) => ({
 	loginForm: state.loginForm
 })
 
-export default connect(mapStateToProps, { logInUser, updateForm, showError, clearFormData } )(Form);
+export default connect(mapStateToProps, { logInUser, updateForm, showError, clearFormData, signUpUser } )(Form);
