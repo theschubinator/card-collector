@@ -26,10 +26,10 @@ const NavBar = (props) => {
 		if(props.user) { 
 			return (
 				<Nav pullRight>
-					<LinkContainer to="/sign-in">
+					<LinkContainer to={`/${props.user.id}/cards`}>
 						<NavItem>View Cards</NavItem>
 					</LinkContainer>,
-					<LinkContainer to="/sign-up">
+					<LinkContainer to="/card/new">
 						<NavItem>New Card</NavItem>
 					</LinkContainer>
 					<LinkContainer to={`/${props.user.id}/profile`}>

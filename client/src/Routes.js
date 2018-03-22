@@ -5,6 +5,8 @@ import HomePage from './components/HomePage';
 import SignInPage from './components/SignIn/SignInPage';
 import SignUpPage from './components/SignIn/SignUpPage';
 import UserProfilePage from './components/UserProfilePage';
+import NewCardPage from './components/NewCardPage';
+import UserCardsPage from './components/UserCardsPage';
 
 const Routes = () => (
 	<Switch>
@@ -12,6 +14,8 @@ const Routes = () => (
 		<Route path ="/sign-in" component={SignInPage} />
 		<Route path="/sign-up" component={SignUpPage} />
 		<Route path="/:user_id/profile" component={UserProfilePage} />
+		<Route path="/card/new" component={NewCardPage} />
+		<Route path="/:user_id/cards" component={UserCardsPage} />
 	</Switch>
 );
 
