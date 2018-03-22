@@ -3,10 +3,12 @@ import thunk from 'redux-thunk';
 
 import { userReducer } from './reducers/UserReducer';
 import { loginFormReducer } from './reducers/LoginFormReducer';
+import { cardsReducer } from './reducers/CardsReducer';
 
 const reducers = combineReducers({
 	user: userReducer,
 	loginForm: loginFormReducer,
+	userCards: cardsReducer
 })
 
 export default createStore(
