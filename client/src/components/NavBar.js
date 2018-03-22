@@ -21,20 +21,24 @@ const NavBar = (props) => {
 		</Nav>
 	);
 
-	const signedInUserLinks = (
-		<Nav pullRight>
-			<LinkContainer to="/sign-in">
-				<NavItem>View Cards</NavItem>
-			</LinkContainer>,
-			<LinkContainer to="/sign-up">
-				<NavItem>New Card</NavItem>
-			</LinkContainer>
-			<LinkContainer to={`/${props.user.id}/profile`}>
-				<NavItem>Profile</NavItem>
-			</LinkContainer>
-			<NavItem onClick={handleLogOut}>Log Out</NavItem>
-		</Nav>
-	);
+	const signedInUserLinks = () => {
+		if(props.user) { 
+			return (
+				<Nav pullRight>
+					<LinkContainer to="/sign-in">
+						<NavItem>View Cards</NavItem>
+					</LinkContainer>,
+					<LinkContainer to="/sign-up">
+						<NavItem>New Card</NavItem>
+					</LinkContainer>
+					<LinkContainer to={`/${props.user.id}/profile`}>
+						<NavItem>Profile</NavItem>
+					</LinkContainer>
+					<NavItem onClick={handleLogOut}>Log Out</NavItem>
+				</Nav>
+			)
+		}
+	};
 
 	return (
 		<Navbar inverse collapseOnSelect>
@@ -48,7 +52,7 @@ const NavBar = (props) => {
 			</Navbar.Header>
 			<Navbar.Collapse>
 				{
-					props.user ? signedInUserLinks : signedOutUserLinks
+					props.user ? signedInUserLinks() : signedOutUserLinks
 				}
 			</Navbar.Collapse>
 		</Navbar>
