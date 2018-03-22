@@ -11,10 +11,10 @@ const defaultState = [
 	}
 ]
 
-export const cardsReducer = (state=defaultState, action) => {
+export const cardsReducer = (state=[], action) => {
 	switch(action.type) {
 		case 'LOAD_CARDS':
-			return state
+			return action.payload
 		default:
 			return state
 	}

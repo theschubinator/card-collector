@@ -5,7 +5,7 @@ import Card from './Card';
 
 class UserCardsPage extends Component {
 	componentDidMount() {
-		this.props.loadUserCards();
+		this.props.loadUserCards(this.props.user.id);
 	}
 
 	render() {
@@ -22,7 +22,8 @@ class UserCardsPage extends Component {
 };
 
 const mapStateToProps = (state) => ({
-	userCards: state.userCards
+	userCards: state.userCards,
+	user: state.user
 })
 
 export default connect(mapStateToProps, { loadUserCards })(UserCardsPage);
