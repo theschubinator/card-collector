@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { showError } from './loginForm';
 
-const url = 'http://localhost:3001/api'
+const url = 'http://localhost:3001'
 
 //ACTION CREATORS
 
@@ -10,44 +10,39 @@ const loadUser = (user) => ({
 	payload: user
 })
 
-export const logOutUser = () => ({
-		type: 'LOG_OUT_USER'
-});
+export const logOutUser = () => {
+	localStorage.removeItem("token");
+	return { type: 'LOG_OUT_USER' }
+};
 
 
 // ASYNC ACTIONS //
 
 export const loadAllUsers = () => {
-	axios.get(`${url}/users`)
+	axios.get(`${url}/api/users`)
 		.then((response) => {debugger})
 }
 
 export const logInUser = (user, history) => {
 	return dispatch => {
-		axios.post(`${url}/sessions`, { user })
+		axios.post(`${url}/auth_user`, { user })
 		.then((response) => {
-			if(response.data.error)
-				dispatch(showError(response.data.error))
-			else
-				dispatch(loadUser(response.data))
-				.then(history.push('/'));
+			dispatch(loadUser(response.data.user))
+			localStorage.setItem('token', response.data.auth_token)
 		})
-		.catch((error) => { console.log(error) })
+		.then(() => history.push('/'))
+		.catch((error) => dispatch(showError(error.response.data.error)))
 	}
 }
 
 export const signUpUser = (user, history) => {
 	return dispatch => {
-		axios.post(`${url}/users`, { user })
+		axios.post(`${url}/api/users`, { user })
 		.then(response => { 
-			dispatch(loadUser(response.data))
-			.then(history.push("/"));
+			dispatch(loadUser(response.data.user))
+			localStorage.setItem('token', response.data.auth_token)
 		})
-		.catch((error) => {
-			if(error.response)
-				dispatch(showError(error.response.data.error[0]))
-			else
-				console.log(error);
-		 })
+		.then(() => history.push('/'))
+		.catch((error) => dispatch(showError(error.response.data.error)))
 	}
 }

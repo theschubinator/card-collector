@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 		resources :users, only: [:index, :create]
 		resources :sessions, only: [:create]
 	end
+	post 'auth_user' => 'authentication#authenticate_user'
 end
