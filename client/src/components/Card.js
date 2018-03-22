@@ -7,7 +7,7 @@ const Card = ({card}) => (
 		{card.rookie && <p>Rookie Card!</p>}
 		<p>{card.player}</p>
 		<p>{card.value}</p>
-		<img src={card.image} alt="photo" />
+		<img src={card.image} alt={card.player} />
 	</div>
 );
 

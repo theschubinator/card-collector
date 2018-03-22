@@ -16,7 +16,7 @@ class ApplicationController < ActionController::API
     return nil unless user and user.id
     {
       auth_token: JsonWebToken.encode({user_id: user.id}),
-      user: {id: user.id, username: user.username}
+      user: {id: user.id, username: user.username, cards: user.cards}
     }
   end
 

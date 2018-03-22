@@ -7,4 +7,19 @@ class Api::CardsController < ApplicationController
 			render json: { error: 'user cannot be found' }, status: 400
 		end
 	end
+
+	def create
+		user = User.find(params[:user_id])
+		card = Card.new(card_params)
+		if user.cards << card
+			render json: card
+		else
+			render json: { error: 'Card Could not be save' } 
+		end
+	end
+
+	private
+		def card_params
+			params.require(:data).permit(:brand, :year, :player, :card_number, :rookie, :value)
+		end
 end

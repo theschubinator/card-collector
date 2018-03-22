@@ -6,7 +6,7 @@ import { saveCard } from '../actions/cards';
 const NewCardPage = (props) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		props.saveCard(props.cardForm);
+		props.saveCard(props.cardForm, props.user.id);
 	};
 
 	const handleChange = (e) => {
@@ -22,6 +22,7 @@ const NewCardPage = (props) => {
 				<input onChange={handleChange} type="text" value={props.cardForm.brand} name="brand" placeholder="Brand Name" />
 				<input onChange={handleChange} type="text" value={props.cardForm.year} name="year" placeholder="Year" />
 				<input onChange={handleChange} type="text" value={props.cardForm.player} name="player" placeholder="Player Name" />
+				<input onChange={handleChange} type="text" value={props.cardForm.card_number} name="card_number" placeholder="Card Number" />
 				<input onChange={handleChange} type="text" value={props.cardForm.value} name="value" placeholder="Value" />
 				<input onChange={handleChange} type="checkbox" checked={props.cardForm.rookie} name="rookie" /><label>Rookie?</label>
 				<input onChange={handleChange} type="submit" />
@@ -31,7 +32,8 @@ const NewCardPage = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-	cardForm: state.cardForm
+	cardForm: state.cardForm,
+	user: state.user
 });
 
 export default connect(mapStateToProps, { updateCardForm, saveCard })(NewCardPage);

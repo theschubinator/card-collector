@@ -3,13 +3,11 @@ import thunk from 'redux-thunk';
 
 import { userReducer } from './reducers/UserReducer';
 import { loginFormReducer } from './reducers/LoginFormReducer';
-import { cardsReducer } from './reducers/CardsReducer';
 import { cardFormReducer } from './reducers/CardFormReducer';
 
 const reducers = combineReducers({
 	user: userReducer,
 	loginForm: loginFormReducer,
-	userCards: cardsReducer,
 	cardForm: cardFormReducer
 });
 
