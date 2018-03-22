@@ -8,6 +8,7 @@ import { logOutUser } from '../actions/user';
 const NavBar = (props) => {
 	const handleLogOut = () => {
 		props.dispatch(logOutUser());
+		localStorage.removeItem('token');
 	}
 
 	const signedOutUserLinks = (

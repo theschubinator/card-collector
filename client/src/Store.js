@@ -6,7 +6,7 @@ import { loginFormReducer } from './reducers/LoginFormReducer';
 
 const reducers = combineReducers({
 	user: userReducer,
-	loginForm: loginFormReducer
+	loginForm: loginFormReducer,
 })
 
 export default createStore(

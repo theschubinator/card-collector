@@ -28,10 +28,12 @@ export const logInUser = (user, history) => {
 		axios.post(`${url}/auth_user`, { user })
 		.then((response) => {
 			dispatch(loadUser(response.data.user))
-			localStorage.setItem('token', response.data.auth_token)
+			if(!localStorage.getItem('token')) {
+				localStorage.setItem('token', response.data.auth_token);
+				history.push(`${response.data.user.id}/profile`);
+			}
 		})
-		.then(() => history.push('/'))
-		.catch((error) => dispatch(showError(error.response.data.error)))
+		.catch((error) => dispatch(showError(error)))
 	}
 }
 
