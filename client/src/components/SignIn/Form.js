@@ -42,18 +42,19 @@ class Form extends Component {
 					placeholder="Enter Username"
 					value={this.props.username}
 					onChange={this.handleOnChange} 
-				/>
+				/><br />
 				<input
 					type="password"
 					name="password"
 					placeholder="Enter Password"
 					value={this.props.password}
 					onChange={this.handleOnChange}
-				/>
+				/><br />
 				{
 					this.props.newUser && this.renderPasswordConfirmation
 				}
 				<input
+					className="submit"
 					type="submit"
 					value="Log In"
 				/>
