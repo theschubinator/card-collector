@@ -33,7 +33,7 @@ export const logInUser = (user, history) => {
 				history.push(`${response.data.user.id}/profile`);
 			}
 		})
-		.catch((error) => dispatch(showError(error)))
+		.catch((error) => dispatch(showError(error.response.data.error)))
 	}
 }
 
