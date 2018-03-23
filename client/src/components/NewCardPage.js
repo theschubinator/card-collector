@@ -1,36 +1,44 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateCardForm } from '../actions/cardForm';
 import { saveCard } from '../actions/cards';
 import PhotoUploader from './PhotoUploader';
+import { clearFormData } from '../actions/cardForm';
 
-const NewCardPage = (props) => {
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		props.saveCard(props.cardForm, props.user.id);
+class NewCardPage extends Component {
+
+	componentWillUnmount() {
+		this.props.clearFormData();
 	};
 
-	const handleChange = (e) => {
+	handleSubmit = (e) => {
+		e.preventDefault();
+		this.props.saveCard(this.props.cardForm, this.props.user.id);
+	};
+
+	handleChange = (e) => {
 		let { name, value } = e.target;
 		if (e.target.type === 'checkbox')
-			value = !props.cardForm.rookie
-		props.updateCardForm(name, value);
+			value = !this.props.cardForm.rookie
+		this.props.updateCardForm(name, value);
 	};
 
-	return (
-		<div>
-			<form onSubmit={handleSubmit}>
-				<PhotoUploader cardForm={props.cardForm} updateCardForm={updateCardForm} />
-				<input onChange={handleChange} type="text" value={props.cardForm.brand} name="brand" placeholder="Brand Name" />
-				<input onChange={handleChange} type="text" value={props.cardForm.year} name="year" placeholder="Year" />
-				<input onChange={handleChange} type="text" value={props.cardForm.player} name="player" placeholder="Player Name" />
-				<input onChange={handleChange} type="text" value={props.cardForm.card_number} name="card_number" placeholder="Card Number" />
-				<input onChange={handleChange} type="text" value={props.cardForm.value} name="value" placeholder="Value" />
-				<input onChange={handleChange} type="checkbox" checked={props.cardForm.rookie} name="rookie" /><label>Rookie?</label>
-				<input onChange={handleChange} type="submit" />
-			</form>
-		</div>
-	);
+	render() {
+		return (
+			<div>
+				<form onSubmit={this.handleSubmit}>
+					<PhotoUploader cardForm={this.props.cardForm} />
+					<input onChange={this.handleChange} type="text" value={this.props.cardForm.brand} name="brand" placeholder="Brand Name" />
+					<input onChange={this.handleChange} type="text" value={this.props.cardForm.year} name="year" placeholder="Year" />
+					<input onChange={this.handleChange} type="text" value={this.props.cardForm.player} name="player" placeholder="Player Name" />
+					<input onChange={this.handleChange} type="text" value={this.props.cardForm.card_number} name="card_number" placeholder="Card Number" />
+					<input onChange={this.handleChange} type="text" value={this.props.cardForm.value} name="value" placeholder="Value" />
+					<input onChange={this.handleChange} type="checkbox" checked={this.props.cardForm.rookie} name="rookie" /><label>Rookie?</label>
+					<input onChange={this.handleChange} type="submit" />
+				</form>
+			</div>
+		);
+	}
 }
 
 const mapStateToProps = (state) => ({
@@ -38,4 +46,4 @@ const mapStateToProps = (state) => ({
 	user: state.user
 });
 
-export default connect(mapStateToProps, { updateCardForm, saveCard })(NewCardPage);
+export default connect(mapStateToProps, { updateCardForm, saveCard, clearFormData })(NewCardPage);

@@ -3,7 +3,7 @@ const defaultState = {
 	year: '',
 	player: '',
 	card_number: '',
-	image_url: 'https://www.oldsportscards.com/wp-content/uploads/2017/07/1984-Topps-123-Dan-Marino-Rookie-Card-209x300.jpg',
+	image_url: '',
 	rookie: false,
 	value: ''
 }
@@ -12,6 +12,8 @@ export const cardFormReducer = (state=defaultState, action) => {
 	switch(action.type) {
 		case 'UPDATE_CARD_FORM':
 			return { ...state, [action.payload.name]: action.payload.value };
+		case 'CLEAR_CARD_FORM':
+			return defaultState;
 		default:
 			return state
 	}
