@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { updateCardForm } from '../actions/cardForm';
 import { saveCard } from '../actions/cards';
+import PhotoUploader from './PhotoUploader';
 
 const NewCardPage = (props) => {
 	const handleSubmit = (e) => {
@@ -19,6 +20,7 @@ const NewCardPage = (props) => {
 	return (
 		<div>
 			<form onSubmit={handleSubmit}>
+				<PhotoUploader cardForm={props.cardForm} updateCardForm={updateCardForm} />
 				<input onChange={handleChange} type="text" value={props.cardForm.brand} name="brand" placeholder="Brand Name" />
 				<input onChange={handleChange} type="text" value={props.cardForm.year} name="year" placeholder="Year" />
 				<input onChange={handleChange} type="text" value={props.cardForm.player} name="player" placeholder="Player Name" />

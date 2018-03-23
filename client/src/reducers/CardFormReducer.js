@@ -3,7 +3,7 @@ const defaultState = {
 	year: '',
 	player: '',
 	card_number: '',
-	image: 'https://www.oldsportscards.com/wp-content/uploads/2017/07/1984-Topps-123-Dan-Marino-Rookie-Card-209x300.jpg',
+	image_url: 'https://www.oldsportscards.com/wp-content/uploads/2017/07/1984-Topps-123-Dan-Marino-Rookie-Card-209x300.jpg',
 	rookie: false,
 	value: ''
 }

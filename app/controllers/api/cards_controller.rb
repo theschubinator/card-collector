@@ -9,6 +9,7 @@ class Api::CardsController < ApplicationController
 	end
 
 	def create
+		# binding.pry
 		user = User.find(params[:user_id])
 		card = Card.new(card_params)
 		if user.cards << card
@@ -20,6 +21,6 @@ class Api::CardsController < ApplicationController
 
 	private
 		def card_params
-			params.require(:data).permit(:brand, :year, :player, :card_number, :rookie, :value)
+			params.require(:data).permit(:brand, :year, :player, :card_number, :rookie, :value, :image_url)
 		end
 end
