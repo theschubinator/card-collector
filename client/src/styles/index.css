@@ -25,6 +25,10 @@ body {
 	box-shadow: 1px 1px 1px #0456a3;
 }
 
+.form .error {
+	color: red;
+}
+
 .form .submit:hover {
 	background-color: #0363b7;
 }

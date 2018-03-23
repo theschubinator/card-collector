@@ -33,6 +33,19 @@ class Form extends Component {
 			onChange={this.handleOnChange}
 		/>
 	);
+
+	showError = () => {
+		if(	this.props.loginForm.error) {
+			if(Array.isArray(	this.props.loginForm.error)) {
+				return this.props.loginForm.error.map((e) => (
+					<p className="error">{e}</p>
+				));
+			} else {
+				return <p className="error">{this.props.loginForm.error}</p>
+			}
+		}
+	}
+
 	render() {
 		return (
 			<form onSubmit={this.handleSubmit}>
@@ -58,9 +71,7 @@ class Form extends Component {
 					type="submit"
 					value="Log In"
 				/>
-				{
-					this.props.loginForm.error && <p>{this.props.loginForm.error}</p>
-				}
+				{	this.showError() }
 			</form>
 		);
 	}
