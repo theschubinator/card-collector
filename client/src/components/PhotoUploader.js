@@ -1,49 +1,36 @@
 
 import React from 'react';
 import Dropzone from 'react-dropzone';
-import request from 'superagent';
 import { connect } from 'react-redux';
 import { updateCardForm } from '../actions/cardForm';
 
-const CLOUDINARY_UPLOAD_PRESET = 'card-collector-card';
-const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/theschubinator/image/upload';
-
 const PhotoUploader = (props) => {
 
- 	const handleImageUpload = (files) => {
-    let upload = request.post(CLOUDINARY_UPLOAD_URL)
-			.field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
-			.field('file', files[0]);
+ 	const handleImagePreview = (files) => {
+		props.updateCardForm('image_url', files[0])
+	}
 
-    upload.end((err, response) => {
-      if (err) {
-        console.error(err);
-      }
-
-      if (response.body.secure_url !== '') {
-				props.updateCardForm('image_url', response.body.secure_url)
-      }
-    });
-  }
+	const renderPreviewImage = () => {
+		if(props.cardForm.image_url === 'https://www.freepnglogos.com/uploads/nfl-3d-logo-png-5.png') {
+			return 	<img src='https://www.freepnglogos.com/uploads/nfl-3d-logo-png-5.png' alt='preview' />
+		} else {
+			return 	<img src={props.cardForm.image_url.preview} alt='preview' />
+		}
+	};
 
 	return (
-		<div>
+		<form>
 			<div className="FileUpload">
 				<Dropzone
-					onDrop={handleImageUpload.bind(this)}
+					onDrop={handleImagePreview.bind(this)}
 					multiple={false}
 					accept="image/*">
 					<div>Drop an image or click to select a file to upload.</div>
 				</Dropzone>
 			</div>
-
-			<div>
-				{props.cardForm.image_url === '' ? null :
-				<div>
-					<img src={props.cardForm.image_url} alt='preview' />
-				</div>}
-			</div>
-		</div>
+			<div>{renderPreviewImage()}</div>
+			
+		</form>
 	);
 };
 

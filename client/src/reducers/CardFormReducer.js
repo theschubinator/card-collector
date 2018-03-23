@@ -3,7 +3,7 @@ const defaultState = {
 	year: '',
 	player: '',
 	card_number: '',
-	image_url: '',
+	image_url: 'https://www.freepnglogos.com/uploads/nfl-3d-logo-png-5.png',
 	rookie: false,
 	value: ''
 }
