@@ -69,7 +69,7 @@ class Form extends Component {
 				<input
 					className="submit"
 					type="submit"
-					value="Log In"
+					value={this.props.newUser ? 'Sign Up' : 'Sign In'}
 				/>
 				{	this.showError() }
 			</form>

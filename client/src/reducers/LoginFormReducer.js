@@ -2,7 +2,9 @@ const defaultState = {
 	username: '',
 	password: '',
 	password_confirmation: '',
-	error: null
+	error: null,
+	showModal: false,
+	form: ''
 };
 
 export const loginFormReducer = (state=defaultState, action) => {
@@ -11,6 +13,8 @@ export const loginFormReducer = (state=defaultState, action) => {
 			return { ...state, [action.payload.name]: action.payload.value }
 		case 'SHOW_ERROR':
 			return { ...state, error: action.payload }
+		case 'TOGGLE_MODAL':
+			return { ...state, showModal: !state.showModal, form: action.payload }
 		case 'CLEAR_FORM':
 			return defaultState
 		default: 

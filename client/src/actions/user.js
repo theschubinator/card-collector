@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { showError } from './loginForm';
+import { showError, clearFormData } from './loginForm';
 
 const url = 'http://localhost:3001'
 
@@ -30,7 +30,7 @@ export const logInUser = (user, history) => {
 			dispatch(loadUser(response.data.user))
 			if(!localStorage.getItem('token')) {
 				localStorage.setItem('token', response.data.auth_token);
-				history.push(`${response.data.user.id}/profile`);
+				dispatch(clearFormData());
 			}
 		})
 		.catch((error) => dispatch(showError(error.response.data.error)))
@@ -43,6 +43,7 @@ export const signUpUser = (user, history) => {
 		.then(response => { 
 			dispatch(loadUser(response.data.user))
 			localStorage.setItem('token', response.data.auth_token)
+			dispatch(clearFormData());
 		})
 		.then(() => history.push('/'))
 		.catch((error) => dispatch(showError(error.response.data.error)))

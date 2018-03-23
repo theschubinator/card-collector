@@ -11,3 +11,8 @@ export const showError = (error) => ({
 export const clearFormData = () => ({
 	type: 'CLEAR_FORM'
 })
+
+export const toggleModal = (form) => ({
+	type: 'TOGGLE_MODAL',
+	payload: form
+})

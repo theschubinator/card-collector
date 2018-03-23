@@ -2,23 +2,25 @@ import React from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { connect } from 'react-redux';
+import PopUpModal from './SignIn/PopUpModal';
 
 import { logOutUser } from '../actions/user';
+import { toggleModal } from '../actions/loginForm';
 
 const NavBar = (props) => {
 	const handleLogOut = () => {
-		props.dispatch(logOutUser());
+		props.logOutUser();
 		localStorage.removeItem('token');
+	}
+
+	const showModal = (e) => {
+		props.toggleModal(e.target.name);
 	}
 
 	const signedOutUserLinks = (
 		<Nav>
-			<LinkContainer to="/sign-in">
-				<NavItem>Sign In</NavItem>
-			</LinkContainer>,
-			<LinkContainer to="/sign-up">
-				<NavItem>Sign Up</NavItem>
-			</LinkContainer>
+			<NavItem onClick={showModal} name="sign-in">Sign In</NavItem>,
+			<NavItem onClick={showModal} name="sign-up">Sign Up</NavItem>
 		</Nav>
 	);
 
@@ -42,6 +44,7 @@ const NavBar = (props) => {
 	};
 
 	return (
+		<div>
 		<Navbar inverse collapseOnSelect>
 			<Navbar.Header>
 				<Navbar.Brand>
@@ -57,6 +60,8 @@ const NavBar = (props) => {
 				}
 			</Navbar.Collapse>
 		</Navbar>
+		<PopUpModal />
+		</div>
 	);
 };
 
@@ -66,4 +71,4 @@ const mapStateToProps = (state) => {
 	}
 }
 
-export default connect(mapStateToProps)(NavBar);
+export default connect(mapStateToProps, { logOutUser, toggleModal })(NavBar);
