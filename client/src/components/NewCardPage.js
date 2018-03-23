@@ -16,18 +16,20 @@ class NewCardPage extends Component {
 	};
 
 	componentDidUpdate(prevProps) {
-		if(typeof this.props.cardForm.image_url  !== 'string' && 
-			 this.props.cardForm.image_url !== prevProps.cardForm.image_url) {
-			this.props.saveCard(this.props.cardForm, this.props.user.id);
+		//if image has been uploaded and return image_url is set from cloudinary
+		if(typeof prevProps.cardForm.image_url  !== 'string' && 
+			this.props.cardForm.image_url !== prevProps.cardForm.image_url) {
+				this.props.saveCard(this.props.cardForm, this.props.user.id);
 		}
 	}
 
 	handleSubmit = (e) => {
 		e.preventDefault();
+		//save card with default image picture set
 		if (this.props.cardForm.image_url === 'https://www.freepnglogos.com/uploads/nfl-3d-logo-png-5.png') {
 			this.props.saveCard(this.props.cardForm, this.props.user.id);
 		} else {
-			//upload picture to cloudinary
+			//upload custom picture to cloudinary
 			let upload = request.post(CLOUDINARY_UPLOAD_URL)
 			.field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
 			.field('file', this.props.cardForm.image_url);
@@ -40,6 +42,7 @@ class NewCardPage extends Component {
 				if (response.body.secure_url !== '') {
 					this.props.updateCardForm('image_url', response.body.secure_url)
 				}
+				//componentDidUpdate will fire after image uploads, which calls saveCard()
 			});
 		}	
 	};
