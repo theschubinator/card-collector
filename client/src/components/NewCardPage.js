@@ -26,7 +26,7 @@ class NewCardPage extends Component {
 	}
 
 	checkImageOrientation = () => {
-		const img = document.getElementsByTagName("IMG")[0]
+		const img = document.getElementById('preview-image')
 		if(img.clientWidth > img.clientHeight) {
 			this.props.updateCardForm('orientation', 'landscape');
 			CLOUDINARY_UPLOAD_PRESET = 'card-collector-card-2';

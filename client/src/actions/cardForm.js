@@ -6,3 +6,7 @@ export const updateCardForm = (name, value) => ({
 export const clearFormData = () => ({
 	type: 'CLEAR_CARD_FORM'
 })
+
+export const toggleNewCardModal = () => ({
+	type: 'TOGGLE_NEW_CARD_MODAL'
+})

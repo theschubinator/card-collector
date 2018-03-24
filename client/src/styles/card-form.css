@@ -1,6 +1,7 @@
 .card-form {
 	text-align: center;
 	font-size: 20px;
+	width: 100%;
 }
 
 .card-form h1 {
@@ -48,10 +49,6 @@
 	font-size: 12px;
 }
 
-/* .card-form .upload-description h3 {
-	margin-bottom: 10px;
-} */
-
 .card-form .upload-description .description-1 p {
 	margin: 0px;
 }
@@ -81,4 +78,65 @@
 
 .card-form .submit:hover {
 	background-color: #0363b7;
+}
+
+.modal-dialog {
+	width: 95%;
+	margin-top: 100px;
+}
+
+@media (min-width:768px) {
+	.modal-dialog {
+		width: 80%;
+	}
+}
+
+@media (min-width:992px) {
+	.modal-dialog {
+		width: 95%;
+	}
+
+	.card-form {
+		padding: 0 30px 0 20px;
+	}
+}
+
+@media (min-width:1200px) {
+	.modal-dialog {
+		width: 85%;
+	}
+
+	.card-form {
+		padding: 0 30px 0 20px;
+	}
+}
+
+@media (min-width:1500px) {
+	.modal-dialog {
+		width: 65%;
+	}
+
+	.card-form {
+		padding: 0 30px 0 20px;
+	}
+}
+
+@media (min-width:1920px) {
+	.modal-dialog {
+		width: 55%;
+	}
+
+	.card-form {
+		padding: 0 30px 0 20px;
+	}
+}
+
+@media (min-width:1920px) {
+	.modal-dialog {
+		width: 45%;
+	}
+
+	.card-form {
+		padding: 0 30px 0 20px;
+	}
 }

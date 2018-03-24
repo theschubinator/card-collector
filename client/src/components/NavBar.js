@@ -4,8 +4,10 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { connect } from 'react-redux';
 
 import PopUpModal from './SignIn/PopUpModal';
+import NewCardModal from './NewCardModal';
 import { logOutUser } from '../actions/user';
 import { toggleModal } from '../actions/loginForm';
+import { toggleNewCardModal } from '../actions/cardForm'
 
 const NavBar = (props) => {
 	const handleLogOut = () => {
@@ -13,14 +15,18 @@ const NavBar = (props) => {
 		localStorage.removeItem('token');
 	}
 
-	const showModal = (e) => {
+	const showLoginModal = (e) => {
 		props.toggleModal(e.target.name);
+	}
+
+	const showNewCardModal = (e) => {
+		props.toggleNewCardModal();
 	}
 
 	const signedOutUserLinks = (
 		<Nav>
-			<NavItem onClick={showModal} name="sign-in">Sign In</NavItem>,
-			<NavItem onClick={showModal} name="sign-up">Sign Up</NavItem>
+			<NavItem onClick={showLoginModal} name="sign-in">Sign In</NavItem>,
+			<NavItem onClick={showLoginModal} name="sign-up">Sign Up</NavItem>
 		</Nav>
 	);
 
@@ -31,9 +37,9 @@ const NavBar = (props) => {
 					<LinkContainer to={`/${props.user.id}/cards`}>
 						<NavItem>View Cards</NavItem>
 					</LinkContainer>,
-					<LinkContainer to="/card/new">
-						<NavItem>New Card</NavItem>
-					</LinkContainer>
+					
+						<NavItem onClick={showNewCardModal} >New Card</NavItem>
+				
 					<LinkContainer to={`/${props.user.id}/profile`}>
 						<NavItem>Profile</NavItem>
 					</LinkContainer>
@@ -61,6 +67,7 @@ const NavBar = (props) => {
 			</Navbar.Collapse>
 		</Navbar>
 		<PopUpModal />
+		<NewCardModal />
 		</div>
 	);
 };
@@ -71,4 +78,4 @@ const mapStateToProps = (state) => {
 	}
 }
 
-export default connect(mapStateToProps, { logOutUser, toggleModal })(NavBar);
+export default connect(mapStateToProps, { logOutUser, toggleModal, toggleNewCardModal })(NavBar);
