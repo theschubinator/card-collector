@@ -1,0 +1,56 @@
+.card-form {
+	text-align: center;
+	font-size: 20px;
+}
+
+.card-form h1 {
+	margin: 30px 0 50px 0;
+}
+
+.card-form input {
+	width: 100%;
+	padding: 5px 10px 5px 10px;
+	margin-bottom: 10px;
+	box-shadow: 0 -30px 50px white inset;
+}
+
+.card-form input:focus {
+	background-color: #f9f375;
+	box-shadow: none;
+}
+
+.card-form form ::placeholder {
+	background-image: none;
+	text-indent: 0px;
+}
+
+.card-form .checkbox input {
+	box-shadow: none;
+}
+
+.card-form .FileUpload {
+	height: 250px;
+}
+
+.card-form .image-preview {
+	position: relative;
+	bottom: 198px;
+	left: 120px;
+}
+
+.card-form img {
+	width: 100px;
+	margin-top: 5px;
+}
+
+.card-form .submit {
+	color: white;
+	background-color: #006CD5;
+	border: 1px solid #0456a3;
+	border-radius: 20px;
+	box-shadow: 1px 1px 1px #0456a3;
+}
+
+.card-form .submit:hover {
+	background-color: #0363b7;
+}

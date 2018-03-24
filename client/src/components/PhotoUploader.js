@@ -11,8 +11,8 @@ const PhotoUploader = (props) => {
 	}
 
 	const renderPreviewImage = () => {
-		if(props.cardForm.image_url === 'https://www.freepnglogos.com/uploads/nfl-3d-logo-png-5.png') {
-			return 	<img src='https://www.freepnglogos.com/uploads/nfl-3d-logo-png-5.png' alt='preview' />
+		if(props.cardForm.image_url === 'http://res.cloudinary.com/theschubinator/image/upload/v1521854831/dzawqarj7i3qlbdf1dic.jpg') {
+			return 	<img src='http://res.cloudinary.com/theschubinator/image/upload/v1521854831/dzawqarj7i3qlbdf1dic.jpg' alt='preview' />
 		} else {
 			return 	<img src={props.cardForm.image_url.preview} alt='preview' />
 		}
@@ -20,15 +20,20 @@ const PhotoUploader = (props) => {
 
 	return (
 		<form>
-			<div className="FileUpload">
+			<div className="col-sm-12 FileUpload">
 				<Dropzone
 					onDrop={handleImagePreview.bind(this)}
 					multiple={false}
 					accept="image/*">
 					<div>Drop an image or click to select a file to upload.</div>
 				</Dropzone>
+		
+				<span className="image-preview">
+					<p>Image Preview</p>
+					{renderPreviewImage()}
+				</span>
 			</div>
-			<div>{renderPreviewImage()}</div>
+	
 			
 		</form>
 	);
