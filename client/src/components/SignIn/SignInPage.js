@@ -1,5 +1,4 @@
 import React from 'react'
-import Form from './Form';
 import { FormWithRouter } from './Form';
 
 import '../../styles/form.css';

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Button, Modal } from 'react-bootstrap';
 import SignInPage from './SignInPage';
@@ -8,10 +8,6 @@ import { toggleModal } from '../../actions/loginForm';
 const PopUpModal = (props) => {
   const handleClose = () => {
     props.toggleModal();
-  }
-
-  const handleShow = () => {
-    this.setState({ show: true });
   }
 
 	const renderForm = () => {
