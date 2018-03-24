@@ -4,12 +4,20 @@ import request from 'superagent';
 import { updateCardForm } from '../actions/cardForm';
 import { saveCard } from '../actions/cards';
 import PhotoUploader from './PhotoUploader';
-import { clearFormData } from '../actions/cardForm';
+import { clearFormData, addError } from '../actions/cardForm';
 import '../styles/card-form.css'
 
 let CLOUDINARY_UPLOAD_PRESET = 'card-collector-card';
 
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/theschubinator/image/upload';
+
+const selectOptions = () => {
+	let optionsArray = [];
+	for(let year='1919'; year <= '2018'; year++) {
+		optionsArray.push( ( <option key={year} value={year}>{year}</option>) )
+	}
+	return optionsArray;
+};
 
 class NewCardPage extends Component {
 
@@ -35,8 +43,7 @@ class NewCardPage extends Component {
 		}
 	} 
 
-	handleSubmit = (e) => {
-		e.preventDefault();
+	uploadImage = () => {
 		this.checkImageOrientation()
 		//save card with default image picture set
 		if (this.props.cardForm.image_url === 'http://res.cloudinary.com/theschubinator/image/upload/v1521863301/sjkfzlpbekocd6dm8uhm.jpg') {
@@ -58,16 +65,39 @@ class NewCardPage extends Component {
 				//componentDidUpdate will fire after image uploads, which calls saveCard()
 			});
 		}	
+	}
+
+	validateInputs(name, value) {
+		if(name ==='value' && (!value || value.match(/^\d{1,}(\.\d{0,2})?$/))) {
+			this.props.updateCardForm(name, value);
+		}
+
+		if(name ==='year' && value.length > 0 && (!value ||value.match(/^\d{0,4}$/))) {
+			this.props.updateCardForm(name, value);
+		}
+
+		if (name ==='rookie') {
+			this.props.updateCardForm(name, !this.props.cardForm.rookie);
+		}
+
+		if (name ==='player' || name==='rookie' || name==='brand' || name==='card_number') {
+			this.props.updateCardForm(name, value);
+		}
+	}
+
+	handleSubmit = (e) => {
+		e.preventDefault();
+		this.uploadImage();
 	};
 
 	handleChange = (e) => {
 		let { name, value } = e.target;
-		if (e.target.type === 'checkbox')
-			value = !this.props.cardForm.rookie
-		this.props.updateCardForm(name, value);
+		this.validateInputs(name, value);
 	};
 
 	render() {
+		const renderErrors = this.props.cardForm.errors.map((error, i) => <p key={i}>{error}</p>);
+
 		return (
 			<div className="container card-form">
 				<h1>Create New Card</h1>
@@ -79,7 +109,9 @@ class NewCardPage extends Component {
 						<form onSubmit={this.handleSubmit}>
 							<div className="col-sm-12">
 								<input 
+									id="player"
 									onChange={this.handleChange} 
+									onblur={'this.value=this.value.toUpperCase()'}
 									type="text" 
 									value={this.props.cardForm.player} 
 									name="player" 
@@ -95,12 +127,10 @@ class NewCardPage extends Component {
 								/>
 							</div>
 							<div className="col-sm-4">
-								<input 
-									onChange={this.handleChange} 
-									type="text" value={this.props.cardForm.year} 
-									name="year" 
-									placeholder="Year" 
-								/>
+								<select onChange={this.handleChange} name="year"> 
+									<option value="" defaultValue>Year</option>
+									{selectOptions()}
+								</select>
 							</div>
 							<div className="col-sm-5">
 								<input 
@@ -130,17 +160,12 @@ class NewCardPage extends Component {
 							</div>
 							<div className="col-sm-12">
 								<input className="submit" type="submit" />
+								{ (this.props.cardForm.errors.length > 0) && <div className="errors">{renderErrors}</div> }
 							</div>
+							
 						</form>
 					</div>
-
-				
-
 				</div>
-
-	
-				
-	
 			</div>
 		);
 	}
@@ -151,4 +176,4 @@ const mapStateToProps = (state) => ({
 	user: state.user
 });
 
-export default connect(mapStateToProps, { updateCardForm, saveCard, clearFormData })(NewCardPage);
+export default connect(mapStateToProps, { updateCardForm, saveCard, clearFormData, addError })(NewCardPage);

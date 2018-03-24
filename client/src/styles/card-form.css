@@ -25,6 +25,16 @@
 	text-indent: 0px;
 }
 
+.card-form select {
+	height: 41px;
+	width: 100%;
+	margin-top: 1px;
+}
+
+.card-form select:focus {
+	background-color: #f9f375;
+}
+
 .card-form .checkbox input {
 	box-shadow: none;
 }
@@ -83,6 +93,11 @@
 .modal-dialog {
 	width: 95%;
 	margin-top: 100px;
+}
+
+.errors p {
+	color: red;
+	margin: 0px;
 }
 
 @media (min-width:768px) {

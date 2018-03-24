@@ -7,7 +7,8 @@ const defaultState = {
 	rookie: false,
 	value: '',
 	orientation: '',
-	showModal: false
+	showModal: false,
+	errors: []
 }
 
 export const cardFormReducer = (state=defaultState, action) => {
@@ -16,6 +17,8 @@ export const cardFormReducer = (state=defaultState, action) => {
 			return { ...state, [action.payload.name]: action.payload.value };
 		case 'TOGGLE_NEW_CARD_MODAL':
 			return { ...state, showModal: !state.showModal }
+		case 'ADD_ERROR_MESSAGE':
+			return { ...state, errors: state.errors.concat(action.payload) }
 		case 'CLEAR_CARD_FORM':
 			return defaultState;
 		default:

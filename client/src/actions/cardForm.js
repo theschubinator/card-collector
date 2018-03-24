@@ -10,3 +10,8 @@ export const clearFormData = () => ({
 export const toggleNewCardModal = () => ({
 	type: 'TOGGLE_NEW_CARD_MODAL'
 })
+
+export const addError = (error) => ({
+	type: 'ADD_ERROR_MESSAGE',
+	payload: error
+})
