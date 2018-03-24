@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { logInUser, signUpUser } from '../../actions/user';
 import { updateForm, showError, clearFormData } from '../../actions/loginForm';
+import { withRouter } from 'react-router-dom';
 
 class Form extends Component {
 	componentWillUnmount() {
@@ -80,5 +81,9 @@ class Form extends Component {
 const mapStateToProps = (state) => ({
 	loginForm: state.loginForm
 })
+
+export const FormWithRouter = withRouter(connect(mapStateToProps, { logInUser, updateForm, showError, clearFormData, signUpUser } )(Form));
+
+
 
 export default connect(mapStateToProps, { logInUser, updateForm, showError, clearFormData, signUpUser } )(Form);

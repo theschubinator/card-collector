@@ -31,6 +31,7 @@ export const logInUser = (user, history) => {
 			if(!localStorage.getItem('token')) {
 				localStorage.setItem('token', response.data.auth_token);
 				dispatch(clearFormData());
+				history.push(`/${response.data.user.id}/cards`)
 			}
 		})
 		.catch((error) => dispatch(showError(error.response.data.error)))
@@ -44,8 +45,8 @@ export const signUpUser = (user, history) => {
 			dispatch(loadUser(response.data.user))
 			localStorage.setItem('token', response.data.auth_token)
 			dispatch(clearFormData());
+			history.push(`/${response.data.user.id}/cards`)
 		})
-		.then(() => history.push('/'))
 		.catch((error) => dispatch(showError(error.response.data.error)))
 	}
 }

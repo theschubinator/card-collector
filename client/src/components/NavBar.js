@@ -2,8 +2,8 @@ import React from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { connect } from 'react-redux';
-import PopUpModal from './SignIn/PopUpModal';
 
+import PopUpModal from './SignIn/PopUpModal';
 import { logOutUser } from '../actions/user';
 import { toggleModal } from '../actions/loginForm';
 
