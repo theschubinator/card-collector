@@ -11,21 +11,52 @@
 }
 
 .form input:focus {
-	background-color: #eff2da;
+	background-color: #f9f375;
 	box-shadow: none;
 }
 
 form ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
 	color: #afaeae;
+	background-image: url('../media/user_icon.png');
+	background-repeat:no-repeat;
+	text-indent: 40px;
 	opacity: 1; /* Firefox */
 }
 
 form :-ms-input-placeholder { /* Internet Explorer 10-11 */
 	color: #afaeae;
+	background-image: url('../media/user_icon.png');
+	background-repeat:no-repeat;
+	text-indent: 40px;
 }
 
 form ::-ms-input-placeholder { /* Microsoft Edge */
 	color: #afaeae;
+	background-image: url('../media/user_icon.png');
+	background-repeat:no-repeat;
+	text-indent: 40px;
+}
+
+form .password::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: #afaeae;
+	background-image: url('../media/password_icon.png');
+	background-repeat:no-repeat;
+	text-indent: 40px;
+	opacity: 1; /* Firefox */
+}
+
+form .password::-ms-input-placeholder { /* Internet Explorer 10-11 */
+	color: #afaeae;
+	background-image: url('../media/password_icon.png');
+	background-repeat:no-repeat;
+	text-indent: 40px;
+}
+
+form .password::-ms-input-placeholder { /* Microsoft Edge */
+	color: #afaeae;
+	background-image: url('../media/password_icon.png');
+	background-repeat:no-repeat;
+	text-indent: 40px;
 }
 
 .form .submit {

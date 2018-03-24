@@ -27,9 +27,10 @@ class Form extends Component {
 
 	renderPasswordConfirmation = (
 		<input
+			className="password"
 			type="password"
 			name="password_confirmation"
-			placeholder="Enter Password Confirmation"
+			placeholder="Password Confirmation"
 			value={this.props.passwordConfirmation}
 			onChange={this.handleOnChange}
 		/>
@@ -53,14 +54,15 @@ class Form extends Component {
 				<input 
 					type="text" 
 					name="username" 
-					placeholder="Enter Username"
+					placeholder="Username"
 					value={this.props.username}
 					onChange={this.handleOnChange} 
 				/><br />
 				<input
+					className="password"
 					type="password"
 					name="password"
-					placeholder="Enter Password"
+					placeholder="Password"
 					value={this.props.password}
 					onChange={this.handleOnChange}
 				/><br />
