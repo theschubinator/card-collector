@@ -1,13 +1,12 @@
 import React from 'react';
 
 const Card = ({card}) => (
-	<div>
-		<h1>{card.brand}</h1>
-		<h3>{card.year}</h3>
-		{card.rookie && <p>Rookie Card!</p>}
-		<p>{card.player}</p>
-		<p>{card.value}</p>
-		<img src={card.image_url} alt={card.player} />
+	<div className="card">
+			<h3>#{card.card_number} - {card.player}</h3>
+			<h4>{card.year} - {card.brand}</h4>
+			<p>{card.rookie && <p className="rookie-card">Rookie Card!</p>}</p>
+			<img src={card.image_url} alt={card.player} />
+			<p className="card-value">Value: ${card.value}</p>
 	</div>
 );
 

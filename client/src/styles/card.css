@@ -1,0 +1,62 @@
+.user-cards {
+	text-align: center;
+}
+
+.user-cards img {
+	width: 150px;
+}
+
+.card .rookie-card {
+	position: absolute;
+	left: 15px;
+	bottom: 109px;
+	font-size: 24px;
+	color: red;
+	transform: rotate(-90deg);
+}
+
+.card .card-value {
+	margin-top: 5px;
+}
+
+@media(min-width: 500px) {
+	.card .rookie-card {
+		left: 70px;
+	}
+}
+
+@media(min-width: 600px) {
+	.card .rookie-card {
+		left: 115px;
+	}
+}
+
+@media(min-width: 680px) {
+	.card .rookie-card {
+		left: 155px;
+	}
+}
+
+@media(min-width: 750px) {
+	.card.rookie-card {
+		left: 195px;
+	}
+}
+
+@media(min-width: 768px) {
+	.card .rookie-card {
+		left: 15px;
+	}
+}
+
+@media(min-width: 992px) {
+	.card.rookie-card {
+		left: -4px;
+	}
+}
+
+@media(min-width: 1200px) {
+	.card .rookie-card {
+		left: -20px;
+	}
+}
