@@ -27,7 +27,7 @@ class NewCardPage extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 		//save card with default image picture set
-		if (this.props.cardForm.image_url === 'http://res.cloudinary.com/theschubinator/image/upload/v1521854831/dzawqarj7i3qlbdf1dic.jpg') {
+		if (this.props.cardForm.image_url === 'http://res.cloudinary.com/theschubinator/image/upload/v1521863301/sjkfzlpbekocd6dm8uhm.jpg') {
 			this.props.saveCard(this.props.cardForm, this.props.user.id);
 		} else {
 			//upload custom picture to cloudinary
