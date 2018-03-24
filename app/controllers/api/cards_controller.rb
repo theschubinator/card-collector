@@ -21,6 +21,6 @@ class Api::CardsController < ApplicationController
 
 	private
 		def card_params
-			params.require(:data).permit(:brand, :year, :player, :card_number, :rookie, :value, :image_url)
+			params.require(:data).permit(:brand, :year, :player, :card_number, :rookie, :value, :image_url, :orientation)
 		end
 end

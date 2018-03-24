@@ -7,7 +7,8 @@ import PhotoUploader from './PhotoUploader';
 import { clearFormData } from '../actions/cardForm';
 import '../styles/card-form.css'
 
-const CLOUDINARY_UPLOAD_PRESET = 'card-collector-card';
+let CLOUDINARY_UPLOAD_PRESET = 'card-collector-card';
+
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/theschubinator/image/upload';
 
 class NewCardPage extends Component {
@@ -24,8 +25,19 @@ class NewCardPage extends Component {
 		}
 	}
 
+	checkImageOrientation = () => {
+		const img = document.getElementsByTagName("IMG")[0]
+		if(img.clientWidth > img.clientHeight) {
+			this.props.updateCardForm('orientation', 'landscape');
+			CLOUDINARY_UPLOAD_PRESET = 'card-collector-card-2';
+		} else {
+			this.props.updateCardForm('orientation', 'portrait');
+		}
+	} 
+
 	handleSubmit = (e) => {
 		e.preventDefault();
+		this.checkImageOrientation()
 		//save card with default image picture set
 		if (this.props.cardForm.image_url === 'http://res.cloudinary.com/theschubinator/image/upload/v1521863301/sjkfzlpbekocd6dm8uhm.jpg') {
 			this.props.saveCard(this.props.cardForm, this.props.user.id);

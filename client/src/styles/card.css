@@ -2,61 +2,29 @@
 	text-align: center;
 }
 
-.user-cards img {
+.card { 
+	border: 1px solid black;
+	margin: 5px;
+}
+
+.card.landscape {
+	padding: 31px 0 31px 0;
+}
+
+.card.portrait img {
 	width: 150px;
+	height: 208px;
 }
 
-.card .rookie-card {
-	position: absolute;
-	left: 15px;
-	bottom: 109px;
-	font-size: 24px;
-	color: red;
-	transform: rotate(-90deg);
+.card.landscape img {
+	height: 150px;
+	width: 208px;
 }
 
-.card .card-value {
-	margin-top: 5px;
+.card.card.portrait .card-value {
+	margin-top: 10px;
 }
 
-@media(min-width: 500px) {
-	.card .rookie-card {
-		left: 70px;
-	}
-}
-
-@media(min-width: 600px) {
-	.card .rookie-card {
-		left: 115px;
-	}
-}
-
-@media(min-width: 680px) {
-	.card .rookie-card {
-		left: 155px;
-	}
-}
-
-@media(min-width: 750px) {
-	.card.rookie-card {
-		left: 195px;
-	}
-}
-
-@media(min-width: 768px) {
-	.card .rookie-card {
-		left: 15px;
-	}
-}
-
-@media(min-width: 992px) {
-	.card.rookie-card {
-		left: -4px;
-	}
-}
-
-@media(min-width: 1200px) {
-	.card .rookie-card {
-		left: -20px;
-	}
+.card.card.landscape .card-value {
+	margin-top: 7px;
 }

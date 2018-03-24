@@ -5,7 +5,8 @@ const defaultState = {
 	card_number: '',
 	image_url: 'http://res.cloudinary.com/theschubinator/image/upload/v1521863301/sjkfzlpbekocd6dm8uhm.jpg',
 	rookie: false,
-	value: ''
+	value: '',
+	orientation: ''
 }
 
 export const cardFormReducer = (state=defaultState, action) => {
