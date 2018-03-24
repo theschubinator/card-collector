@@ -25,11 +25,18 @@ const PhotoUploader = (props) => {
 					onDrop={handleImagePreview.bind(this)}
 					multiple={false}
 					accept="image/*">
-					<div>
+					<div className="upload-description">
 						<h3>Upload an Image</h3>
-						<p>DROP AN IMAGE</p>
-						<p>OR</p>
-						<p>CLICK TO SELECT</p>
+						<span className="description-1">
+							<p>DROP AN IMAGE</p>
+							<p>OR</p>
+							<p>CLICK TO SELECT</p>
+						</span>
+						<span className="description-2">
+							<p>Recommended Sizes</p>
+							<p>Portrait: (200x278px)</p>
+							<p>Landscape:(278x200px)</p>
+						</span>
 					</div>
 				</Dropzone>
 		
