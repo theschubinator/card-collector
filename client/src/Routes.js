@@ -5,8 +5,8 @@ import HomePage from './components/HomePage';
 import SignInPage from './components/SignIn/SignInPage';
 import SignUpPage from './components/SignIn/SignUpPage';
 import UserProfilePage from './components/UserProfilePage';
-import NewCardPage from './components/NewCardPage';
-import UserCardsPage from './components/UserCardsPage';
+import NewCardPage from './components/UserCards/NewCardPage';
+import UserCardsPage from './components/UserCards/UserCardsPage';
 
 const Routes = () => (
 	<Switch>

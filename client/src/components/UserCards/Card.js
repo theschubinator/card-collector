@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import DeletePage from './DeletePage';
-import { toggleDeletePage } from '../actions/toggles';
+import { toggleDeletePage } from '../../actions/toggles';
 
 const Card = (props) => {
 	const orientationClassName = props.card.orientation === 'portrait'? 'portrait' : 'landscape';

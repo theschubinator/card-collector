@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import request from 'superagent';
 import { withRouter } from 'react-router-dom';
-import { updateCardForm } from '../actions/cardForm';
-import { saveCard } from '../actions/cards';
+import { updateCardForm } from '../../actions/cardForm';
+import { saveCard } from '../../actions/cards';
 import PhotoUploader from './PhotoUploader';
-import { clearFormData, addError, clearErrors } from '../actions/cardForm';
-import '../styles/card-form.css'
+import { clearFormData, addError, clearErrors } from '../../actions/cardForm';
+import '../../styles/card-form.css'
 
 let CLOUDINARY_UPLOAD_PRESET = 'card-collector-card';
 

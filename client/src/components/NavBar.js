@@ -4,7 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { connect } from 'react-redux';
 
 import PopUpModal from './SignIn/PopUpModal';
-import NewCardModal from './NewCardModal';
+import NewCardModal from './UserCards/NewCardModal';
 import { logOutUser } from '../actions/user';
 import { toggleLoginModal } from '../actions/toggles';
 import { toggleNewCardModal } from '../actions/toggles'
@@ -46,7 +46,7 @@ const NavBar = (props) => {
 							<NavItem className="nav-item">Profile</NavItem>
 						</LinkContainer>
 						<NavItem className="nav-item" onClick={handleLogOut}>Log Out</NavItem>
-					</Nav>
+					</Nav> 
 				</div>
 			)
 		}

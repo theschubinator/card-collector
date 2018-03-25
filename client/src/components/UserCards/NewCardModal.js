@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Button, Modal } from 'react-bootstrap';
 import { NewCardPageWithRouter } from './NewCardPage';
-import { toggleNewCardModal } from '../actions/toggles';
-import '../styles/card-form.css';
+import { toggleNewCardModal } from '../../actions/toggles';
+import '../../styles/card-form.css';
 
 const NewCardModal = (props) => {
   const handleClose = () => {
