@@ -8,8 +8,8 @@ import '../../styles/card-form.css';
 const NewCardModal = (props) => {
   const handleClose = () => {
     props.toggleNewCardModal();
-  }
-
+	}
+	
 	return (
 		<div className="main card-form">
 			<Modal show={props.toggles.toggleNewCardModal }>

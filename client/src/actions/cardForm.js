@@ -3,6 +3,11 @@ export const updateCardForm = (name, value) => ({
 	payload: { name, value }
 });
 
+export const setCardFormOnEdit = (card) => ({
+	type: 'UPDATE_FOR_EDIT',
+	payload: card
+})
+
 export const clearFormData = () => ({
 	type: 'CLEAR_CARD_FORM'
 })

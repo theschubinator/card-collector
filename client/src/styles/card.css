@@ -4,13 +4,26 @@
 
 .card { 
 	border: 1px solid black;
+	padding: 0 3px 0 3px;
 	margin: 15px 0px 15px 0px;
 	background-color: #d2e1f2;
 	box-shadow: 4px 4px 20px black;
 }
 
-.card h3 {
-	margin-top: 30px;
+.card-player {
+	margin-top: 15px;
+	margin-bottom: 5px;
+	font-size: 20px;
+}
+
+.card-year {
+	margin-top: 0px;
+}
+
+.card-value {
+	margin-top: 15px;
+	margin-bottom: 20px;
+	color: green;
 }
 
 .card.landscape {
@@ -41,6 +54,16 @@
 	font-size: 18px;
 }
 
+
+.user-cards .landscape .rookie-card {
+	position: absolute;
+	font-size: 26px;
+	color: red;
+	transform: rotate(-90deg);
+	bottom: 129px;
+	left: -9px;
+}
+
 .card .rookie-card {
 	position: absolute;
 	font-size: 26px;
@@ -49,8 +72,9 @@
 	bottom: 115px;
 }
 
+
 .card.unvalued {
-	height: 350px;
+	height: 365px;
 }
 
 .card .delete {
@@ -61,6 +85,12 @@
 	color: black;
 }
 
+.card .edit {
+	position: absolute;
+	top: 8px;
+	left: 30px;
+}
+
 @media (min-width:768px) {
 	.card .rookie-card {
 		bottom: 132px;
@@ -69,16 +99,33 @@
 	.card .delete {
 		top: 20px;
 	}
+
+	.card .edit {
+		left: 25px;
+		top: 22px;
+	}
+
+	.user-cards .landscape .rookie-card {
+		bottom: 145px;
+	}
 }
 
 @media (min-width:992px) {
 	.card .rookie-card {
 		left: -15px;
 	}
+
+	.user-cards .landscape .rookie-card {
+		left: -35px;;
+	}
 }
 
 @media (min-width:1200px) {
 	.card .rookie-card {
 		left: -25px;
+	}
+
+	.user-cards .landscape .rookie-card {
+		left: -45px;;
 	}
 }

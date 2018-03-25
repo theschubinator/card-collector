@@ -4,7 +4,11 @@
 }
 
 #confirm-delete.valued {
-	height: 348px;
+	height: 363px;
+}
+
+.landscape #confirm-delete {
+	height: 302px;
 }
 
 #delete {

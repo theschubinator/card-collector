@@ -100,6 +100,10 @@ class NewCardPage extends Component {
 	render() {
 		const renderErrors = this.props.cardForm.errors.map((error, i) => <p key={i}>{error}</p>);
 
+		const setDefaultYear = this.props.cardForm.year ? 
+				<option value={this.props.cardForm.year} defaultValue>{this.props.cardForm.year}</option> 
+			: <option value="" defaultValue>Year</option>
+			
 		return (
 			<div className="container card-form">
 				<h1>Create New Card</h1>
@@ -129,7 +133,7 @@ class NewCardPage extends Component {
 							</div>
 							<div className="col-sm-4">
 								<select onChange={this.handleChange} name="year"> 
-									<option value="" defaultValue>Year</option>
+									{setDefaultYear}
 									{selectOptions()}
 								</select>
 							</div>

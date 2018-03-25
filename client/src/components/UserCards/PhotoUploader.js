@@ -11,8 +11,12 @@ const PhotoUploader = (props) => {
 	}
 
 	const renderPreviewImage = () => {
-		if(props.cardForm.image_url === 'http://res.cloudinary.com/theschubinator/image/upload/v1521934596/c3mqjnvmy4ido233yrht.jpg') {
-			return 	<img id="preview-image" src='http://res.cloudinary.com/theschubinator/image/upload/v1521934596/c3mqjnvmy4ido233yrht.jpg' alt='preview' />
+		if(typeof props.cardForm.image_url === 'string') {
+			if (props.cardForm.image_url !== 'http://res.cloudinary.com/theschubinator/image/upload/v1521934596/c3mqjnvmy4ido233yrht.jpg') {
+				return <img id="preview-image" src={props.cardForm.image_url} alt='preview' />
+			} else {
+				return 	<img id="preview-image" src='http://res.cloudinary.com/theschubinator/image/upload/v1521934596/c3mqjnvmy4ido233yrht.jpg' alt='preview' />
+			}
 		} else {
 			return 	<img id="preview-image" src={props.cardForm.image_url.preview} alt='preview' />
 		}
