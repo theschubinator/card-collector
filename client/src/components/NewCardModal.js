@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Button, Modal } from 'react-bootstrap';
-import NewCardPage from './NewCardPage';
+import { NewCardPageWithRouter } from './NewCardPage';
 import { toggleNewCardModal } from '../actions/cardForm';
 import '../styles/card-form.css';
 
@@ -14,7 +14,7 @@ const NewCardModal = (props) => {
 		<div className="card-form">
 			<Modal show={props.loginForm.showModal }>
 				<Modal.Body>
-					<NewCardPage />
+					<NewCardPageWithRouter />
 				</Modal.Body>
 				<Modal.Footer>
 					<Button onClick={handleClose}>Close</Button>

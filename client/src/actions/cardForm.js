@@ -15,3 +15,7 @@ export const addError = (error) => ({
 	type: 'ADD_ERROR_MESSAGE',
 	payload: error
 })
+
+export const clearErrors = () => ({
+	type: 'CLEAR_ERRORS'
+})

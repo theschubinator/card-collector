@@ -15,7 +15,7 @@ class Api::CardsController < ApplicationController
 		if user.cards << card
 			render json: card
 		else
-			render json: { error: 'Card Could not be save' } 
+			render json: { errors: card.errors.full_messages }, status: 400
 		end
 	end
 

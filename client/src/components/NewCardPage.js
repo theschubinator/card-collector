@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import request from 'superagent';
+import { withRouter } from 'react-router-dom';
 import { updateCardForm } from '../actions/cardForm';
 import { saveCard } from '../actions/cards';
 import PhotoUploader from './PhotoUploader';
-import { clearFormData, addError } from '../actions/cardForm';
+import { clearFormData, addError, clearErrors } from '../actions/cardForm';
 import '../styles/card-form.css'
 
 let CLOUDINARY_UPLOAD_PRESET = 'card-collector-card';
@@ -29,7 +30,7 @@ class NewCardPage extends Component {
 		//if image has been uploaded and return image_url is set from cloudinary
 		if(typeof prevProps.cardForm.image_url  !== 'string' && 
 			this.props.cardForm.image_url !== prevProps.cardForm.image_url) {
-				this.props.saveCard(this.props.cardForm, this.props.user.id);
+				this.props.saveCard(this.props.cardForm, this.props.user.id, this.props.history);
 		}
 	}
 
@@ -46,8 +47,8 @@ class NewCardPage extends Component {
 	uploadImage = () => {
 		this.checkImageOrientation()
 		//save card with default image picture set
-		if (this.props.cardForm.image_url === 'http://res.cloudinary.com/theschubinator/image/upload/v1521863301/sjkfzlpbekocd6dm8uhm.jpg') {
-			this.props.saveCard(this.props.cardForm, this.props.user.id);
+		if (this.props.cardForm.image_url === 'http://res.cloudinary.com/theschubinator/image/upload/v1521934596/c3mqjnvmy4ido233yrht.jpg') {
+			this.props.saveCard(this.props.cardForm, this.props.user.id, this.props.history);
 		} else {
 			//upload custom picture to cloudinary
 			let upload = request.post(CLOUDINARY_UPLOAD_URL)
@@ -80,13 +81,14 @@ class NewCardPage extends Component {
 			this.props.updateCardForm(name, !this.props.cardForm.rookie);
 		}
 
-		if (name ==='player' || name==='rookie' || name==='brand' || name==='card_number') {
+		if (name ==='player' || name==='brand' || name==='card_number') {
 			this.props.updateCardForm(name, value);
 		}
 	}
 
 	handleSubmit = (e) => {
 		e.preventDefault();
+		this.props.clearErrors();
 		this.uploadImage();
 	};
 
@@ -111,7 +113,6 @@ class NewCardPage extends Component {
 								<input 
 									id="player"
 									onChange={this.handleChange} 
-									onblur={'this.value=this.value.toUpperCase()'}
 									type="text" 
 									value={this.props.cardForm.player} 
 									name="player" 
@@ -176,4 +177,6 @@ const mapStateToProps = (state) => ({
 	user: state.user
 });
 
-export default connect(mapStateToProps, { updateCardForm, saveCard, clearFormData, addError })(NewCardPage);
+export const NewCardPageWithRouter = withRouter(connect(mapStateToProps, { updateCardForm, saveCard, clearFormData, addError, clearErrors })(NewCardPage));
+
+export default connect(mapStateToProps, { updateCardForm, saveCard, clearFormData, addError, clearErrors })(NewCardPage);
