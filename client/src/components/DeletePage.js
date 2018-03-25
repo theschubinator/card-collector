@@ -1,16 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import { deleteCard } from '../actions/user';
 import { toggleDeletePage } from '../actions/toggles';
 import '../styles/delete.css';
 
 const DeletePage = (props) => {
 
 	const handleClick = (e) => {
-		const { name } = e.target;
-		if (name === 'no') {
-			props.toggleDeletePage();
-		}
+		e.target.name === 'no' ? props.toggleDeletePage() : 	props.deleteCard(props.user.id, props.card.id, props.history)
 	}
 
 	return (
@@ -31,6 +30,8 @@ const DeletePage = (props) => {
 }
 
 const mapStateToProps = (state) => ({
+	user: state.user,
 	toggles: state.toggles
 })
-export default connect(mapStateToProps, { toggleDeletePage })(DeletePage);
+
+export default connect(mapStateToProps, { toggleDeletePage, deleteCard })(DeletePage);

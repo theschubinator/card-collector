@@ -82,6 +82,4 @@ const mapStateToProps = (state) => ({
 
 export const FormWithRouter = withRouter(connect(mapStateToProps, { logInUser, updateForm, showError, toggleLoginModal, signUpUser } )(Form));
 
-
-
 export default connect(mapStateToProps, { logInUser, updateForm, showError, toggleLoginModal, signUpUser } )(Form);

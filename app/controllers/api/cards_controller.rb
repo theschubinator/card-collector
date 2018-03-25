@@ -9,13 +9,21 @@ class Api::CardsController < ApplicationController
 	end
 
 	def create
-		# binding.pry
 		user = User.find(params[:user_id])
 		card = Card.new(card_params)
 		if user.cards << card
 			render json: card
 		else
 			render json: { errors: card.errors.full_messages }, status: 400
+		end
+	end
+
+	def destroy
+		card = Card.find(params[:id])
+		if card.delete
+			render json: { card_id: card.id }
+		else
+			render json: { error: 'Unable to Delete Card' }, status: 409
 		end
 	end
 

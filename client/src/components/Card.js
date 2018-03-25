@@ -11,10 +11,10 @@ const Card = (props) => {
 	const handleClick = () => {
 		props.toggleDeletePage(props.card.id);
 	}
-
+	
 	return (
 		<div className={`${orientationClassName} ${rookieClassName} ${valueClassName}`}>
-				{ props.toggles.toggleDeletePage.card_id === props.card.id ? <DeletePage card={props.card} valueClassName={valueClassName} />:
+				{ props.toggles.toggleDeletePage.card_id === props.card.id ? <DeletePage card={props.card} valueClassName={valueClassName} history={props.history} />:
 				(<div><button className="delete" onClick={handleClick}>x</button>
 				<h3>#{props.card.card_number} - {props.card.player}</h3>
 				<h4>{props.card.year} - {props.card.brand}</h4>

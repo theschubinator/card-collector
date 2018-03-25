@@ -1,4 +1,5 @@
 const defaultState = {
+	id: '',
 	brand: '',
 	year: '',
 	player: '',
@@ -8,7 +9,8 @@ const defaultState = {
 	value: '',
 	orientation: 'portrait',
 	showModal: false,
-	errors: []
+	errors: [],
+	message: ''
 }
 
 export const cardFormReducer = (state=defaultState, action) => {

@@ -16,6 +16,11 @@ export const logOutUser = () => {
 	return { type: 'LOG_OUT_USER' }
 };
 
+const removeCardFromState = (card) => ({
+	type: 'DELETE_CARD',
+	payload: card
+})
+
 
 // ASYNC ACTIONS //
 
@@ -49,5 +54,13 @@ export const signUpUser = (user, history) => {
 			history.push(`/${response.data.user.id}/cards`)
 		})
 		.catch((error) => dispatch(showError(error.response.data.error)))
+	}
+}
+
+export const deleteCard = (user_id, card_id, history) => {
+	return dispatch => {
+		axios.delete(`${url}/api/users/${user_id}/cards/${card_id}`)
+		.then((response => dispatch(removeCardFromState(response.data))))
+		history.push(`/${user_id}/cards`)
 	}
 }

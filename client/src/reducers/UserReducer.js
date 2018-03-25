@@ -6,6 +6,9 @@ export const userReducer = (state=null, action) => {
 			return state=null;
 		case 'ADD_CARD':
 			return {...state, cards: state.cards.concat(action.payload)};
+		case 'DELETE_CARD':
+			const cards =  state.cards.filter(card => card.id !== action.payload.card_id);
+			return { ...state, cards: cards }
 		default:
 			return state
 	}
