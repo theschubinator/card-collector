@@ -4,3 +4,7 @@ body {
 	font-family: sans-serif;
 	background-color: #EEEEEE;
 }
+
+#main {
+	margin-top: 100px;
+}

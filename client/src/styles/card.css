@@ -4,7 +4,9 @@
 
 .card { 
 	border: 1px solid black;
-	margin: 5px;
+	margin: 15px 0px 15px 0px;
+	background-color: #d2e1f2;
+	box-shadow: 4px 4px 20px black;
 }
 
 .card.landscape {
@@ -14,17 +16,53 @@
 .card.portrait img {
 	width: 150px;
 	height: 208px;
+	border: 2px solid #70aeef;
 }
 
 .card.landscape img {
 	height: 150px;
 	width: 208px;
+	border: 2px solid #70aeef;
 }
 
 .card.card.portrait .card-value {
 	margin-top: 10px;
+	color: green;
+	font-size: 18px;
 }
 
 .card.card.landscape .card-value {
 	margin-top: 7px;
+	color: green;
+	font-size: 18px;
+}
+
+.card .rookie-card {
+	position: absolute;
+	font-size: 26px;
+	color: red;
+	transform: rotate(-90deg);
+	bottom: 115px;
+}
+
+.card.unvalued {
+	height: 341px;
+}
+
+@media (min-width:768px) {
+	.card .rookie-card {
+		bottom: 132px;
+	}
+}
+
+@media (min-width:992px) {
+	.card .rookie-card {
+		left: -15px;
+	}
+}
+
+@media (min-width:1200px) {
+	.card .rookie-card {
+		left: -25px;
+	}
 }

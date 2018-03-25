@@ -1,7 +1,7 @@
 import React from 'react';
 
 const UserProfilePage = () => (
-	<div>
+	<div id="main">
 		<form>
 		<label>
 			<input type='checkbox' />Rookei?

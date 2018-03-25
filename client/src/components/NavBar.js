@@ -8,6 +8,7 @@ import NewCardModal from './NewCardModal';
 import { logOutUser } from '../actions/user';
 import { toggleModal } from '../actions/loginForm';
 import { toggleNewCardModal } from '../actions/cardForm'
+import '../styles/navbar.css';
 
 const NavBar = (props) => {
 	const handleLogOut = () => {
@@ -33,24 +34,26 @@ const NavBar = (props) => {
 	const signedInUserLinks = () => {
 		if(props.user) { 
 			return (
-				<Nav pullRight>
-					<LinkContainer to={`/${props.user.id}/cards`}>
-						<NavItem>View Cards</NavItem>
-					</LinkContainer>,
-					
+				<div>
+					<Nav pullLeft>
 						<NavItem onClick={showNewCardModal} >New Card</NavItem>
-				
-					<LinkContainer to={`/${props.user.id}/profile`}>
-						<NavItem>Profile</NavItem>
-					</LinkContainer>
-					<NavItem onClick={handleLogOut}>Log Out</NavItem>
-				</Nav>
+					</Nav>
+					<Nav pullRight>
+						<LinkContainer to={`/${props.user.id}/cards`}>
+							<NavItem>View Cards</NavItem>
+						</LinkContainer>,
+						<LinkContainer to={`/${props.user.id}/profile`}>
+							<NavItem>Profile</NavItem>
+						</LinkContainer>
+						<NavItem onClick={handleLogOut}>Log Out</NavItem>
+					</Nav>
+				</div>
 			)
 		}
 	};
 
 	return (
-		<div>
+		<div id="fixed-navbar">
 		<Navbar inverse collapseOnSelect>
 			<Navbar.Header>
 				<Navbar.Brand>

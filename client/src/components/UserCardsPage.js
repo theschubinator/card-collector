@@ -12,7 +12,7 @@ const UserCardsPage = (props) => {
 	}
 	
 	return (
-		<div className="container user-cards">
+		<div id="main" className="container user-cards">
 			<div className="row">
 				{showCards}
 			</div>
