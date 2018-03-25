@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import request from 'superagent';
 import { withRouter } from 'react-router-dom';
@@ -20,40 +20,28 @@ const selectOptions = () => {
 	return optionsArray;
 };
 
-class NewCardPage extends Component {
+const NewCardPage = (props) => {
 
-	componentWillUnmount() {
-		this.props.clearFormData();
-	};
-
-	componentDidUpdate(prevProps) {
-		//if image has been uploaded and return image_url is set from cloudinary
-		if(typeof prevProps.cardForm.image_url  !== 'string' && 
-			this.props.cardForm.image_url !== prevProps.cardForm.image_url) {
-				this.props.saveCard(this.props.cardForm, this.props.user.id, this.props.history);
-		}
-	}
-
-	checkImageOrientation = () => {
+	const checkImageOrientation = () => {
 		const img = document.getElementById('preview-image')
 		if(img.clientWidth > img.clientHeight) {
-			this.props.updateCardForm('orientation', 'landscape');
+			props.updateCardForm('orientation', 'landscape');
 			CLOUDINARY_UPLOAD_PRESET = 'card-collector-card-2';
 		} else {
-			this.props.updateCardForm('orientation', 'portrait');
+			props.updateCardForm('orientation', 'portrait');
 		}
 	} 
 
-	uploadImage = () => {
-		this.checkImageOrientation()
+	const uploadImageAndSave = () => {
+		checkImageOrientation()
 		//save card with default image picture set
-		if (this.props.cardForm.image_url === 'http://res.cloudinary.com/theschubinator/image/upload/v1521934596/c3mqjnvmy4ido233yrht.jpg') {
-			this.props.saveCard(this.props.cardForm, this.props.user.id, this.props.history);
+		if (props.cardForm.image_url === 'http://res.cloudinary.com/theschubinator/image/upload/v1521934596/c3mqjnvmy4ido233yrht.jpg') {
+			props.saveCard(props.cardForm, props.user.id, props.history);
 		} else {
 			//upload custom picture to cloudinary
 			let upload = request.post(CLOUDINARY_UPLOAD_URL)
 			.field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
-			.field('file', this.props.cardForm.image_url);
+			.field('file', props.cardForm.image_url);
 
 			upload.end((err, response) => {
 				if (err) {
@@ -61,119 +49,117 @@ class NewCardPage extends Component {
 				}
 
 				if (response.body.secure_url !== '') {
-					this.props.updateCardForm('image_url', response.body.secure_url)
+					props.saveCard(props.cardForm, props.user.id, props.history, response.body.secure_url)
 				}
-				//componentDidUpdate will fire after image uploads, which calls saveCard()
 			});
 		}	
 	}
 
-	validateInputs(name, value) {
+	const validateInputs = (name, value)  => {
 		if(name ==='value' && (!value || value.match(/^\d{1,}(\.\d{0,2})?$/))) {
-			this.props.updateCardForm(name, value);
+			props.updateCardForm(name, value);
 		}
 
 		if(name ==='year' && value.length > 0 && (!value ||value.match(/^\d{0,4}$/))) {
-			this.props.updateCardForm(name, value);
+			props.updateCardForm(name, value);
 		}
 
 		if (name ==='rookie') {
-			this.props.updateCardForm(name, !this.props.cardForm.rookie);
+			props.updateCardForm(name, !props.cardForm.rookie);
 		}
 
 		if (name ==='player' || name==='brand' || name==='card_number') {
-			this.props.updateCardForm(name, value);
+			props.updateCardForm(name, value);
 		}
 	}
 
-	handleSubmit = (e) => {
+	const handleSubmit = (e) => {
 		e.preventDefault();
-		this.props.clearErrors();
-		this.uploadImage();
+		props.clearErrors();
+		uploadImageAndSave();
 	};
 
-	handleChange = (e) => {
+	const handleChange = (e) => {
 		let { name, value } = e.target;
-		this.validateInputs(name, value);
+		validateInputs(name, value);
 	};
 
-	render() {
-		const renderErrors = this.props.cardForm.errors.map((error, i) => <p key={i}>{error}</p>);
 
-		const setDefaultYear = this.props.cardForm.year ? 
-				<option value={this.props.cardForm.year} defaultValue>{this.props.cardForm.year}</option> 
-			: <option value="" defaultValue>Year</option>
+	const renderErrors = props.cardForm.errors.map((error, i) => <p key={i}>{error}</p>);
+
+	const setDefaultYear = props.cardForm.year ? 
+			<option value={props.cardForm.year} defaultValue>{props.cardForm.year}</option> 
+		: <option value="" defaultValue>Year</option>
 			
-		return (
-			<div className="container card-form">
-				<h1>Create New Card</h1>
-				<div className="row">
-					<div className="col-md-6 photo-uploader">
-						<PhotoUploader cardForm={this.props.cardForm} />		
-					</div>
-					<div className="col-md-6">
-						<form onSubmit={this.handleSubmit}>
-							<div className="col-sm-12">
-								<input 
-									id="player"
-									onChange={this.handleChange} 
-									type="text" 
-									value={this.props.cardForm.player} 
-									name="player" 
-									placeholder="Player Name" 
-								/>
-							</div>
-							<div className="col-sm-8">
+	return (
+		<div className="container card-form">
+			<h1>Create New Card</h1>
+			<div className="row">
+				<div className="col-md-6 photo-uploader">
+					<PhotoUploader cardForm={props.cardForm} />		
+				</div>
+				<div className="col-md-6">
+					<form onSubmit={handleSubmit}>
+						<div className="col-sm-12">
+							<input 
+								id="player"
+								onChange={handleChange} 
+								type="text" 
+								value={props.cardForm.player} 
+								name="player" 
+								placeholder="Player Name" 
+							/>
+						</div>
+						<div className="col-sm-8">
+							<input
+								onChange={handleChange} 
+								type="text" value={props.cardForm.brand} 
+								name="brand" 
+								placeholder="Brand Name" 
+							/>
+						</div>
+						<div className="col-sm-4">
+							<select onChange={handleChange} name="year"> 
+								{setDefaultYear}
+								{selectOptions()}
+							</select>
+						</div>
+						<div className="col-sm-5">
+							<input 
+								onChange={handleChange} 
+								type="text" value={props.cardForm.card_number} 
+								name="card_number" 
+								placeholder="#Card Number" 
+							/>
+						</div>
+						<div className="col-sm-5">
+							<input 
+								onChange={handleChange} 
+								type="text" value={props.cardForm.value} 
+								name="value" 
+								placeholder="$Value" 
+							/>
+						</div>
+						<div className="col-sm-2">
+							<label className="checkbox">
 								<input
-									onChange={this.handleChange} 
-									type="text" value={this.props.cardForm.brand} 
-									name="brand" 
-									placeholder="Brand Name" 
-								/>
-							</div>
-							<div className="col-sm-4">
-								<select onChange={this.handleChange} name="year"> 
-									{setDefaultYear}
-									{selectOptions()}
-								</select>
-							</div>
-							<div className="col-sm-5">
-								<input 
-									onChange={this.handleChange} 
-									type="text" value={this.props.cardForm.card_number} 
-									name="card_number" 
-									placeholder="#Card Number" 
-								/>
-							</div>
-							<div className="col-sm-5">
-								<input 
-									onChange={this.handleChange} 
-									type="text" value={this.props.cardForm.value} 
-									name="value" 
-									placeholder="$Value" 
-								/>
-							</div>
-							<div className="col-sm-2">
-								<label className="checkbox">
-									<input
-										onChange={this.handleChange} 
-										type="checkbox" 
-										checked={this.props.cardForm.rookie} 
-										name="rookie" 
-									/>Rookie?
-								</label>
-							</div>
-							<div className="col-sm-12">
-								<input className="submit" type="submit" />
-								{ (this.props.cardForm.errors.length > 0) && <div className="errors">{renderErrors}</div> }
-							</div>
-							
-						</form>
-					</div>
+									onChange={handleChange} 
+									type="checkbox" 
+									checked={props.cardForm.rookie} 
+									name="rookie" 
+								/>Rookie?
+							</label>
+						</div>
+						<div className="col-sm-12">
+							<input className="submit" type="submit" />
+							{ (props.cardForm.errors.length > 0) && <div className="errors">{renderErrors}</div> }
+						</div>
+						
+					</form>
 				</div>
 			</div>
-		);
-	}
+		</div>
+	);
 }
 
 const mapStateToProps = (state) => ({

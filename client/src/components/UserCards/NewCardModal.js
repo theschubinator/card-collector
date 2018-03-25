@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import { Button, Modal } from 'react-bootstrap';
 import { NewCardPageWithRouter } from './NewCardPage';
 import { toggleNewCardModal } from '../../actions/toggles';
+import { clearFormData } from '../../actions/cardForm';
 import '../../styles/card-form.css';
 
 const NewCardModal = (props) => {
   const handleClose = () => {
-    props.toggleNewCardModal();
+		props.toggleNewCardModal();
+		props.clearFormData();
 	}
 	
 	return (
@@ -28,4 +30,4 @@ const mapStateToProps = (state) => ({
 	toggles: state.toggles
 });
 
-export default connect(mapStateToProps, { toggleNewCardModal })(NewCardModal);
+export default connect(mapStateToProps, { toggleNewCardModal, clearFormData })(NewCardModal);

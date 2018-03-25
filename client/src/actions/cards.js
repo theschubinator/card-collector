@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { toggleNewCardModal } from './cardForm.js';
+import { toggleNewCardModal, clearFormData } from './cardForm.js';
 
 const url = 'http://localhost:3001'
 
@@ -19,12 +19,15 @@ export const toggleDeletePage = () => ({
 
 // ASYNC Actions
 
-export const saveCard = (data, user_id, history) => {
+export const saveCard = (data, user_id, history, image) => {
+	if (image) { 	data.image_url = image }
+
 	return dispatch => {
 		axios.post(`${url}/api/users/${user_id}/cards`, { data })
 		.then((response) => {
 			dispatch(addCard(response.data));
 			dispatch(toggleNewCardModal());
+			dispatch(clearFormData());
 			history.push(`/${user_id}/cards`)
 		})
 		.catch((error) => dispatch(addErrors(error.response.data)));
