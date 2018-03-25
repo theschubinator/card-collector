@@ -3,24 +3,24 @@ import { connect } from 'react-redux';
 import { Button, Modal } from 'react-bootstrap';
 import SignInPage from './SignInPage';
 import SignUpPage from './SignUpPage';
-import { toggleModal } from '../../actions/loginForm';
+import { toggleLoginModal } from '../../actions/toggles';
 
 const PopUpModal = (props) => {
   const handleClose = () => {
-    props.toggleModal();
+    props.toggleLoginModal();
   }
 
 	const renderForm = () => {
-		if (props.loginForm.form === "sign-in") {
+		if (props.toggles.toggleLoginModal === "sign-in") {
 			return 	<SignInPage />
-		} else if(props.loginForm.form === "sign-up") {
+		} else if(props.toggles.toggleLoginModal === "sign-up") {
 			return <SignUpPage />
 		}
 	}
 
 	return (
 		<div>
-			<Modal show={props.loginForm.showModal}>
+			<Modal show={props.toggles.toggleLoginModal === 'sign-in' || props.toggles.toggleLoginModal === 'sign-up' }>
 				<Modal.Body>
 					{ renderForm() }
 				</Modal.Body>
@@ -33,7 +33,7 @@ const PopUpModal = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-	loginForm: state.loginForm
+	toggles: state.toggles
 });
 
-export default connect(mapStateToProps, { toggleModal })(PopUpModal);
+export default connect(mapStateToProps, { toggleLoginModal })(PopUpModal);

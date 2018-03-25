@@ -1,91 +1,87 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { logInUser, signUpUser } from '../../actions/user';
-import { updateForm, showError, clearFormData } from '../../actions/loginForm';
+import { updateForm, showError } from '../../actions/loginForm';
+import { toggleLoginModal } from '../../actions/toggles';
 import { withRouter } from 'react-router-dom';
 
-class Form extends Component {
-	componentWillUnmount() {
-		this.props.clearFormData();
-	}
-
-	handleSubmit = (e) => {
+const Form = (props) => {
+	const handleSubmit = (e) => {
 		e.preventDefault();
-		if(!this.props.newUser) {
-			this.props.logInUser(this.props.loginForm, this.props.history);
-		} else if((this.props.newUser && this.props.loginForm.password === this.props.loginForm.password_confirmation)) {
-			this.props.signUpUser(this.props.loginForm, this.props.history);
+		if(!props.newUser) {
+			props.logInUser(props.loginForm, props.history);
+		} else if((props.newUser && props.loginForm.password === props.loginForm.password_confirmation)) {
+			props.signUpUser(props.loginForm, props.history);
 		} else {
-			this.props.showError('Password and Password Confirmation do not match');
+			props.showError('Password and Password Confirmation do not match');
 		}
 	}
 
-	handleOnChange = (e) => {
+	const handleOnChange = (e) => {
 		const { name, value } = e.target;
-		this.props.updateForm(name, value);
+		props.updateForm(name, value);
 	}
 
-	renderPasswordConfirmation = (
+	const renderPasswordConfirmation = (
 		<input
 			className="password"
 			type="password"
 			name="password_confirmation"
 			placeholder="Password Confirmation"
-			value={this.props.passwordConfirmation}
-			onChange={this.handleOnChange}
+			value={props.passwordConfirmation}
+			onChange={handleOnChange}
 		/>
 	);
 
-	showError = () => {
-		if(	this.props.loginForm.error) {
-			if(Array.isArray(	this.props.loginForm.error)) {
-				return this.props.loginForm.error.map((e) => (
+	const showError = () => {
+		if(	props.loginForm.error) {
+			if(Array.isArray(	props.loginForm.error)) {
+				return props.loginForm.error.map((e) => (
 					<p className="error">{e}</p>
 				));
 			} else {
-				return <p className="error">{this.props.loginForm.error}</p>
+				return <p className="error">{props.loginForm.error}</p>
 			}
 		}
 	}
 
-	render() {
-		return (
-			<form onSubmit={this.handleSubmit}>
-				<input 
-					type="text" 
-					name="username" 
-					placeholder="Username"
-					value={this.props.username}
-					onChange={this.handleOnChange} 
-				/><br />
-				<input
-					className="password"
-					type="password"
-					name="password"
-					placeholder="Password"
-					value={this.props.password}
-					onChange={this.handleOnChange}
-				/><br />
-				{
-					this.props.newUser && this.renderPasswordConfirmation
-				}
-				<input
-					className="submit"
-					type="submit"
-					value={this.props.newUser ? 'Sign Up' : 'Sign In'}
-				/>
-				{	this.showError() }
-			</form>
-		);
-	}
+	return (
+		<form onSubmit={handleSubmit}>
+			<input 
+				type="text" 
+				name="username" 
+				placeholder="Username"
+				value={props.username}
+				onChange={handleOnChange} 
+			/><br />
+			<input
+				className="password"
+				type="password"
+				name="password"
+				placeholder="Password"
+				value={props.password}
+				onChange={handleOnChange}
+			/><br />
+			{
+				props.newUser && renderPasswordConfirmation
+			}
+			<input
+				className="submit"
+				type="submit"
+				value={props.newUser ? 'Sign Up' : 'Sign In'}
+			/>
+			{	showError() }
+		</form>
+	);
 }
 
 const mapStateToProps = (state) => ({
-	loginForm: state.loginForm
+	loginForm: state.loginForm,
+	toggles: state.toggles
 })
 
-export const FormWithRouter = withRouter(connect(mapStateToProps, { logInUser, updateForm, showError, clearFormData, signUpUser } )(Form));
+export const FormWithRouter = withRouter(connect(mapStateToProps, { logInUser, updateForm, showError, toggleLoginModal, signUpUser } )(Form));
 
 
 
-export default connect(mapStateToProps, { logInUser, updateForm, showError, clearFormData, signUpUser } )(Form);
+export default connect(mapStateToProps, { logInUser, updateForm, showError, toggleLoginModal, signUpUser } )(Form);

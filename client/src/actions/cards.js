@@ -13,6 +13,10 @@ const addErrors = (errors) => ({
 	payload: errors
 })
 
+export const toggleDeletePage = () => ({
+	type: 'TOGGLE_DELETE_PAGE'
+})
+
 // ASYNC Actions
 
 export const saveCard = (data, user_id, history) => {

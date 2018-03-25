@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 import PopUpModal from './SignIn/PopUpModal';
 import NewCardModal from './NewCardModal';
 import { logOutUser } from '../actions/user';
-import { toggleModal } from '../actions/loginForm';
-import { toggleNewCardModal } from '../actions/cardForm'
+import { toggleLoginModal } from '../actions/toggles';
+import { toggleNewCardModal } from '../actions/toggles'
 import '../styles/navbar.css';
 
 const NavBar = (props) => {
@@ -17,7 +17,7 @@ const NavBar = (props) => {
 	}
 
 	const showLoginModal = (e) => {
-		props.toggleModal(e.target.name);
+		props.toggleLoginModal(e.target.name);
 	}
 
 	const showNewCardModal = (e) => {
@@ -36,16 +36,16 @@ const NavBar = (props) => {
 			return (
 				<div>
 					<Nav pullLeft>
-						<NavItem onClick={showNewCardModal} >New Card</NavItem>
+						<NavItem className="nav-item" onClick={showNewCardModal} >New Card</NavItem>
 					</Nav>
 					<Nav pullRight>
-						<LinkContainer to={`/${props.user.id}/cards`}>
-							<NavItem>View Cards</NavItem>
+						<LinkContainer activeClassName="" id="nav-item" to={`/${props.user.id}/cards`}>
+							<NavItem id="nav-item">View Cards</NavItem>
 						</LinkContainer>,
-						<LinkContainer to={`/${props.user.id}/profile`}>
-							<NavItem>Profile</NavItem>
+						<LinkContainer activeClassName="" to={`/${props.user.id}/profile`}>
+							<NavItem className="nav-item">Profile</NavItem>
 						</LinkContainer>
-						<NavItem onClick={handleLogOut}>Log Out</NavItem>
+						<NavItem className="nav-item" onClick={handleLogOut}>Log Out</NavItem>
 					</Nav>
 				</div>
 			)
@@ -81,4 +81,4 @@ const mapStateToProps = (state) => {
 	}
 }
 
-export default connect(mapStateToProps, { logOutUser, toggleModal, toggleNewCardModal })(NavBar);
+export default connect(mapStateToProps, { logOutUser, toggleLoginModal, toggleNewCardModal })(NavBar);

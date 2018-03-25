@@ -1,0 +1,35 @@
+#confirm-delete {
+	height: 330px;
+	padding: 20px;
+}
+
+#confirm-delete.valued {
+	height: 348px;
+}
+
+#delete {
+	z-index: 1;
+	position: absolute;
+	top:  80px;
+	right: 40px;
+}
+
+#card-background {
+	position: relative;
+	bottom: 19px;
+	opacity: 0.2;
+	color: #d1cfcf;
+}
+
+
+#confirm-delete h2 {
+	margin-top: 40px;
+	margin-bottom: 50px;
+}
+
+#confirm-delete button {
+	font-size: 26px;
+	margin: 0 20px 0 20px;
+	padding: 10px 15px 10px 15px;
+	box-shadow: -1px -2px 2px black inset;
+}

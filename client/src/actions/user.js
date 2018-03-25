@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { showError, clearFormData } from './loginForm';
+import { showError } from './loginForm';
+import { toggleLoginModal } from './toggles';
 
 const url = 'http://localhost:3001'
 
@@ -30,7 +31,7 @@ export const logInUser = (user, history) => {
 			dispatch(loadUser(response.data.user))
 			if(!localStorage.getItem('token')) {
 				localStorage.setItem('token', response.data.auth_token);
-				dispatch(clearFormData());
+				dispatch(toggleLoginModal());
 				history.push(`/${response.data.user.id}/cards`)
 			}
 		})
@@ -44,7 +45,7 @@ export const signUpUser = (user, history) => {
 		.then(response => { 
 			dispatch(loadUser(response.data.user))
 			localStorage.setItem('token', response.data.auth_token)
-			dispatch(clearFormData());
+			dispatch(toggleLoginModal());
 			history.push(`/${response.data.user.id}/cards`)
 		})
 		.catch((error) => dispatch(showError(error.response.data.error)))

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Button, Modal } from 'react-bootstrap';
 import { NewCardPageWithRouter } from './NewCardPage';
-import { toggleNewCardModal } from '../actions/cardForm';
+import { toggleNewCardModal } from '../actions/toggles';
 import '../styles/card-form.css';
 
 const NewCardModal = (props) => {
@@ -12,7 +12,7 @@ const NewCardModal = (props) => {
 
 	return (
 		<div className="card-form">
-			<Modal show={props.loginForm.showModal }>
+			<Modal show={props.toggles.toggleNewCardModal }>
 				<Modal.Body>
 					<NewCardPageWithRouter />
 				</Modal.Body>
@@ -25,7 +25,7 @@ const NewCardModal = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-	loginForm: state.cardForm
+	toggles: state.toggles
 });
 
 export default connect(mapStateToProps, { toggleNewCardModal })(NewCardModal);
