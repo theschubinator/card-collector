@@ -8,6 +8,7 @@ import NewCardModal from './UserCards/NewCardModal';
 import { logOutUser } from '../actions/user';
 import { toggleLoginModal } from '../actions/toggles';
 import { toggleNewCardModal } from '../actions/toggles'
+import cardCollectionNavImage from '../media/cardCollectionNavImage.png';
 import '../styles/navbar.css';
 
 const NavBar = (props) => {
@@ -58,7 +59,7 @@ const NavBar = (props) => {
 			<Navbar.Header>
 				<Navbar.Brand>
 					<LinkContainer to="/">
-						<span>Card-Collector</span>
+						<img src={cardCollectionNavImage} alt="card collecter" />
 					</LinkContainer>
 				</Navbar.Brand>
 				<Navbar.Toggle />

@@ -11,7 +11,7 @@ const NewCardModal = (props) => {
   }
 
 	return (
-		<div className="card-form">
+		<div className="main card-form">
 			<Modal show={props.toggles.toggleNewCardModal }>
 				<Modal.Body>
 					<NewCardPageWithRouter />

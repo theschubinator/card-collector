@@ -7,6 +7,20 @@
 	height: 50px;
 }
 
+#fixed-navbar img {
+	width: 150px;
+	height: 100px;
+}
+
+#fixed-navbar a {
+	font-size: 20px;
+	margin-top: 25px;
+}
+
+.icon-bar {
+	margin-top: 20px;
+}
+
 .navbar-left {
 	margin-left: 50px;
 }
