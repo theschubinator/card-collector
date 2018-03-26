@@ -5,17 +5,22 @@ import { connect } from 'react-redux';
 import { updateCardForm } from '../../actions/cardForm';
 
 const PhotoUploader = (props) => {
+	const defaultImage = 'http://res.cloudinary.com/theschubinator/image/upload/v1521934596/c3mqjnvmy4ido233yrht.jpg'
 
  	const handleImagePreview = (files) => {
 		props.updateCardForm('image_url', files[0])
 	}
 
+	const removeImage = () => {
+		props.updateCardForm('image_url', defaultImage)
+	}
+
 	const renderPreviewImage = () => {
 		if(typeof props.cardForm.image_url === 'string') {
-			if (props.cardForm.image_url !== 'http://res.cloudinary.com/theschubinator/image/upload/v1521934596/c3mqjnvmy4ido233yrht.jpg') {
+			if (props.cardForm.image_url !== defaultImage) {
 				return <img id="preview-image" src={props.cardForm.image_url} alt='preview' />
 			} else {
-				return 	<img id="preview-image" src='http://res.cloudinary.com/theschubinator/image/upload/v1521934596/c3mqjnvmy4ido233yrht.jpg' alt='preview' />
+				return 	<img id="preview-image" src={defaultImage} alt='preview' />
 			}
 		} else {
 			return 	<img id="preview-image" src={props.cardForm.image_url.preview} alt='preview' />
@@ -47,6 +52,7 @@ const PhotoUploader = (props) => {
 				<span className="image-preview">
 					<h5>Image Preview</h5>
 					{renderPreviewImage()}
+					{ props.cardForm.image_url !== defaultImage && <p onClick={removeImage}><a href="#">Remove Image</a></p> }
 				</span>
 			</div>
 	
