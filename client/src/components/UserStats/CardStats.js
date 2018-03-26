@@ -13,7 +13,7 @@ const cardValue = (cards) => {
 			total += parseFloat(card.value)
 		}
 	})
-	return total;
+	return total.toFixed(2);
 }
 
 const CardStats = (props) => {
