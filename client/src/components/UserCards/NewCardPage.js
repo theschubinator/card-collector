@@ -57,11 +57,11 @@ const NewCardPage = (props) => {
 	}
 
 	const validateInputs = (name, value)  => {
-		if(name ==='value' && (!value || value.match(/^\d{1,}(\.\d{0,2})?$/))) {
+		if(name ==='value' && (!value || value.match(/^\d{1,}(\.\d{0,2})?$/) || value.match(/\.(\d{0,2}?$)/))) {
 			props.updateCardForm(name, value);
 		}
 
-		if(name ==='year' && value.length > 0 && (!value ||value.match(/^\d{0,4}$/))) {
+		if(name ==='year' && value.length > 0 && (!value || value.match(/^\d{0,4}$/))) {
 			props.updateCardForm(name, value);
 		}
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Card from './Card';
 import NewCardModal from './NewCardModal';
+import CardStats from '../UserStats/CardStats';
 import '../../styles/card.css';
 
 const UserCardsPage = (props) => {
@@ -15,6 +16,7 @@ const UserCardsPage = (props) => {
 	return (
 		<div id="main" className="container user-cards">
 			<div className="row">
+				<CardStats />
 				{showCards}
 				<NewCardModal />
 			</div>
