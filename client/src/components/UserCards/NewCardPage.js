@@ -33,12 +33,14 @@ const NewCardPage = (props) => {
 	} 
 
 	const uploadImageAndSave = () => {
-		checkImageOrientation()
-		//save card with default image picture set
-		if (props.cardForm.image_url === 'http://res.cloudinary.com/theschubinator/image/upload/v1521934596/c3mqjnvmy4ido233yrht.jpg') {
+		checkImageOrientation();
+		
+		if (typeof props.cardForm.image_url === 'string') {
+			//save card with default image picture set OR
+			//edit card with same image...
 			props.saveCard(props.cardForm, props.user.id, props.history);
 		} else {
-			//upload custom picture to cloudinary
+			//upload a new image to cloudinary
 			let upload = request.post(CLOUDINARY_UPLOAD_URL)
 			.field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
 			.field('file', props.cardForm.image_url);
@@ -90,10 +92,10 @@ const NewCardPage = (props) => {
 	const setDefaultYear = props.cardForm.year ? 
 			<option value={props.cardForm.year} defaultValue>{props.cardForm.year}</option> 
 		: <option value="" defaultValue>Year</option>
-			
+	
 	return (
 		<div className="container card-form">
-			<h1>Create New Card</h1>
+			{ props.cardForm.type ==="edit" ? <h1>Edit Card</h1> : <h1>Add Card</h1> }
 			<div className="row">
 				<div className="col-md-6 photo-uploader">
 					<PhotoUploader cardForm={props.cardForm} />		

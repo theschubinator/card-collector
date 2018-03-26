@@ -37,7 +37,7 @@ const NavBar = (props) => {
 			return (
 				<div>
 					<Nav pullLeft>
-						<NavItem className="nav-item" onClick={showNewCardModal} >New Card</NavItem>
+						<NavItem className="nav-item" onClick={showNewCardModal} >Add Card</NavItem>
 					</Nav>
 					<Nav pullRight>
 						<LinkContainer activeClassName="" id="nav-item" to={`/${props.user.id}/cards`}>

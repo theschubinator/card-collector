@@ -18,6 +18,15 @@ class Api::CardsController < ApplicationController
 		end
 	end
 
+	def update 
+		card = Card.find(params[:id])
+		if card.update(card_params)
+			render json: card
+		else
+			render json: { error: 'Unable to  Update Card' }, status: 409
+		end
+	end
+
 	def destroy
 		card = Card.find(params[:id])
 		if card.delete

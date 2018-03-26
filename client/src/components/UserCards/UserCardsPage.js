@@ -6,7 +6,7 @@ import '../../styles/card.css';
 
 const UserCardsPage = (props) => {
 	let showCards;
-	if (props.user && !Array.isArray(props.user)) {
+	if (props.user && props.user.username) {
 		showCards = props.user.cards.map((card) => ( 
 			<div key={card.id} className="col-sm-6 col-md-4 col-lg-3"><Card card={card} user_id={props.user.id} history={props.history} /></div> )
 		);

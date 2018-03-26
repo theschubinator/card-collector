@@ -10,7 +10,8 @@ const defaultState = {
 	orientation: 'portrait',
 	showModal: false,
 	errors: [],
-	message: ''
+	message: '',
+	type: ''
 }
 
 export const cardFormReducer = (state=defaultState, action) => {
@@ -18,7 +19,7 @@ export const cardFormReducer = (state=defaultState, action) => {
 		case 'UPDATE_CARD_FORM':
 			return { ...state, [action.payload.name]: action.payload.value };
 		case 'UPDATE_FOR_EDIT':
-			return { ...action.payload, errors: [] };
+			return { ...action.payload, errors: [], type:'edit' };
 		case 'TOGGLE_NEW_CARD_MODAL':
 			return { ...state, showModal: !state.showModal };
 		case 'ADD_ERROR_MESSAGE':
@@ -27,6 +28,8 @@ export const cardFormReducer = (state=defaultState, action) => {
 			return { ...state, errors: [] };
 		case 'CLEAR_CARD_FORM':
 			return defaultState;
+		case 'SET_CARD_FORM_TYPE':
+			debugger
 		default:
 			return state
 	}
