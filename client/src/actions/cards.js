@@ -27,8 +27,20 @@ const updateCard = (card) => ({
 
 
 export const saveCard = (data, user_id, history, image) => {
+
 	if (image) { 	data.image_url = image }
 
+	const checkImageOrientation = () => {
+		const img = document.getElementById('preview-image')
+		if(img.clientWidth > img.clientHeight) {
+			data.orientation = 'landscape'
+		} else {
+			data.orientation = 'portrait'
+		}
+	} 
+
+	checkImageOrientation();
+	
 	const newCardRequest = () => {
 		return dispatch => {
 			axios.post(`${url}/api/users/${user_id}/cards`, { data })

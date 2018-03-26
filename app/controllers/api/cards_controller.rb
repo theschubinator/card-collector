@@ -18,7 +18,7 @@ class Api::CardsController < ApplicationController
 		end
 	end
 
-	def update 
+	def update
 		card = Card.find(params[:id])
 		if card.update(card_params)
 			render json: card
