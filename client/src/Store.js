@@ -5,12 +5,14 @@ import { userReducer } from './reducers/UserReducer';
 import { loginFormReducer } from './reducers/LoginFormReducer';
 import { cardFormReducer } from './reducers/CardFormReducer';
 import { toggleReducer } from './reducers/ToggleReducer';
+import { filterReducer } from './reducers/FilterReducer';
 
 const reducers = combineReducers({
 	user: userReducer,
 	loginForm: loginFormReducer,
 	cardForm: cardFormReducer,
-	toggles: toggleReducer
+	toggles: toggleReducer,
+	filters: filterReducer
 });
 
 export default createStore(
