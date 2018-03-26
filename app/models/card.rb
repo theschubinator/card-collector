@@ -3,6 +3,7 @@ class Card < ApplicationRecord
 
 	validates :brand, presence: true
 	validates :year, presence: true
-	validates :player, presence: true
+	validates :first_name, presence: true
+	validates :last_name, presence: true
 	validates :card_number, presence: true
 end

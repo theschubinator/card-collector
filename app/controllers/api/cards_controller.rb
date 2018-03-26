@@ -11,6 +11,7 @@ class Api::CardsController < ApplicationController
 	def create
 		user = User.find(params[:user_id])
 		card = Card.new(card_params)
+		# formatResponse(card)
 		if user.cards << card
 			render json: card
 		else
@@ -38,6 +39,10 @@ class Api::CardsController < ApplicationController
 
 	private
 		def card_params
-			params.require(:data).permit(:brand, :year, :player, :card_number, :rookie, :value, :image_url, :orientation)
+			params.require(:data).permit(:brand, :year, :first_name, :last_name, :card_number, :rookie, :value, :image_url, :orientation)
+		end
+
+		def formatResponse(cardData)
+			binding.pry
 		end
 end
