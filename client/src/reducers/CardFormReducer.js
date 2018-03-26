@@ -29,8 +29,6 @@ export const cardFormReducer = (state=defaultState, action) => {
 			return { ...state, errors: [] };
 		case 'CLEAR_CARD_FORM':
 			return defaultState;
-		case 'SET_CARD_FORM_TYPE':
-			debugger
 		default:
 			return state
 	}

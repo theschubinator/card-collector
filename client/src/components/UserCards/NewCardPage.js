@@ -62,7 +62,13 @@ const validateInputs = (name, value, props)  => {
 	if (name ==='rookie') {
 		props.updateCardForm(name, !props.cardForm.rookie);
 	}
-	if (name ==='first_name' || name === 'last_name' || name==='brand' || name==='card_number') {
+	if (name ==='first_name' || name === 'last_name' || name==='brand') {
+		if(props.cardForm[name].length === 0) {
+			value = value.toUpperCase()
+		}
+		props.updateCardForm(name, value);
+	}
+	if (name==='card_number') {
 		props.updateCardForm(name, value);
 	}
 }

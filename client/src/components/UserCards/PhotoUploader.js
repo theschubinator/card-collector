@@ -52,7 +52,7 @@ const PhotoUploader = (props) => {
 				<span className="image-preview">
 					<h5>Image Preview</h5>
 					{renderPreviewImage()}
-					{ props.cardForm.image_url !== defaultImage && <p onClick={removeImage}><a href="#">Remove Image</a></p> }
+					{ props.cardForm.image_url !== defaultImage && <p onClick={removeImage}><a>Remove Image</a></p> }
 				</span>
 			</div>
 	
