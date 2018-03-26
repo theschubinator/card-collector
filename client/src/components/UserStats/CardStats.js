@@ -18,12 +18,26 @@ const cardValue = (cards) => {
 
 const CardStats = (props) => {
 	return props.user  &&
-		<div className="row">
-			<div className="col-sm-12">
-				<p>Total Cards: {props.user.cards.length} </p>
-				<p>Rookie Cards: {rookieCards(props.user.cards)}</p>
-				<p>Total Value: ${cardValue(props.user.cards)}</p>
-			</div>
+		<div id="card-stats">
+			<h4>
+				<span className="stats-row">
+					<span id="total"><strong>Total:</strong></span>
+					<span>Cards: {props.user.cards.length}</span>
+					<span>Rookie Cards: {rookieCards(props.user.cards)}</span>
+					<span>Value: ${cardValue(props.user.cards)}</span>
+				</span>
+				<span id="select">Sort By:
+					<select>
+						<option>Added Date</option>
+						<option>Brand</option>
+						<option>Player</option>
+						<option>Rookie</option>
+						<option>Value</option>
+						<option>Year</option>
+					</select>
+					<a>Advanced Filters</a>
+				</span>
+			</h4>		
 		</div>
 }
 
