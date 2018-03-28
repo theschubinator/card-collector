@@ -1,3 +1,3 @@
 class CardSerializer < ActiveModel::Serializer
-  attributes :id, :brand, :year, :first_name, :last_name, :card_number, :value, :rookie, :image_url, :orientation
+  attributes :id, :brand, :year, :first_name, :last_name, :card_number, :value, :rookie, :image_url, :orientation, :created_at
 end

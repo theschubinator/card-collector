@@ -27,7 +27,7 @@ const Card = (props) => {
 						<button className="delete" onClick={handleClick}>x</button>
 						<Button className="edit" bsSize="small" bsStyle="primary" onClick={editCard}>Edit</Button>
 						<h4 className="card-number">#{props.card.card_number}</h4>
-						<h3 className="card-player">{`${props.card.first_name} ${props.card.last_name}`}</h3>
+						<h3 className="card-player">{`${props.card.last_name}, ${props.card.first_name}`}</h3>
 						<h4 className="card-year">{props.card.year} - {props.card.brand}</h4>
 						{ props.card.rookie && <p className="rookie-card">Rookie Card!</p> }
 						<img src={props.card.image_url} alt={props.card.player} />

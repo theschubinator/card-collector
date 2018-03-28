@@ -20,7 +20,7 @@ const cardValue = (cards) => {
 class CardStats extends Component {
 
 	componentWillMount() {
-		this.props.sortBy('added_date');
+		this.props.sortBy('created_at');
 	}
 
 	handleChange = (e) => {
@@ -40,14 +40,12 @@ class CardStats extends Component {
 				</span>
 				<span id="select">Sort By:
 					<select onChange={this.handleChange}>
-						<option value="added_date" defaultValue>Added Date</option>
-						<option value="brand">Brand</option>
-						<option value="player">Player</option>
-						<option value="rookie">Rookie</option>
-						<option value="value-ascending">Value Ascending</option>
-						<option value="value-descending">Value Descending</option>
-						<option value="year-ascending">Year Ascending</option>
-						<option value="year-descending">Year Descending</option>
+						<option value="created_at descending" defaultValue>Newly Added</option>
+						<option value="brand ascending">Brand</option>
+						<option value="last_name ascending">Player</option>
+						<option value="rookie ascending">Rookie</option>
+						<option value="value descending">Value</option>
+						<option value="year ascending">Year</option>
 					</select>
 					<a>Advanced Filters</a>
 				</span>
