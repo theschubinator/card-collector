@@ -31,7 +31,7 @@ const Card = (props) => {
 						<h4 className="card-year">{props.card.year} - {props.card.brand}</h4>
 						{ props.card.rookie && <p className="rookie-card">Rookie Card!</p> }
 						<img src={props.card.image_url} alt={props.card.player} />
-						{ props.card.value && <p className="card-value">Value: ${(props.card.value / 100).toFixed(2) }</p> }
+						{ props.card.value > 0 && <p className="card-value">Value: ${(props.card.value / 100).toFixed(2) }</p> }
 					</div>
 				}
 		</div>

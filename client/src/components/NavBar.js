@@ -43,9 +43,9 @@ const NavBar = (props) => {
 						<LinkContainer activeClassName="" id="nav-item" to={`/${props.user.id}/cards`}>
 							<NavItem id="nav-item">View Cards</NavItem>
 						</LinkContainer>,
-						<LinkContainer activeClassName="" to={`/${props.user.id}/profile`}>
+						{/* <LinkContainer activeClassName="" to={`/${props.user.id}/profile`}>
 							<NavItem className="nav-item">Profile</NavItem>
-						</LinkContainer>
+						</LinkContainer> */}
 						<NavItem className="nav-item" onClick={handleLogOut}>Log Out</NavItem>
 					</Nav> 
 				</div>

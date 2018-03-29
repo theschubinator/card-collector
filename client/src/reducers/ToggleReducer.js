@@ -1,7 +1,8 @@
 const defaultState = {
 	toggleNewCardModal: false,
 	toggleLoginModal: false,
-	toggleDeletePage: { card_id: null }
+	toggleDeletePage: { card_id: null },
+	toggleAdvancedFilter: false
 }
 
 export const toggleReducer = (state=defaultState, action) => {
@@ -13,6 +14,8 @@ export const toggleReducer = (state=defaultState, action) => {
 		case 'TOGGLE_DELETE_PAGE':
 			const card_id = { card_id: action.payload }
 			return { ...state, toggleDeletePage: card_id }
+		case 'TOGGLE_ADVANCE_FILTER':
+			return { ...state, toggleAdvancedFilter: !state.toggleAdvancedFilter }
 		default:
 			return state
 	}
