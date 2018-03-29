@@ -11,14 +11,12 @@ const filterBy = (cards, filters) => {
 	}
 
 	if(filters.order === 'ascending') {
-		debugger
 		return cards.sort((a, b) => {
 			if(a[filters.filter] < b[filters.filter]) return -1;
 			if(a[filters.filter] > b[filters.filter]) return 1;
 			return 0;
 		})
 	} else {
-		debugger
 		return cards.sort((a, b) => {
 			if(b[filters.filter] < a[filters.filter]) return -1;
 			if(b[filters.filter] > a[filters.filter]) return 1;
@@ -118,6 +116,7 @@ const filterCards = (cards, filters) => {
 	
 const showCards = (props) => {
 	let showCards;
+
 	if (props.user && props.user.username) {
 		const filteredCards = filterCards(props.user.cards, props.filters)
 		return filteredCards.map((card) => ( 

@@ -11,7 +11,7 @@ class Api::CardsController < ApplicationController
 	def create
 		user = User.find(params[:user_id])
 		card = Card.new(card_params)
-		formatValue(card)
+		# formatValue(card)
 		if user.cards << card
 			render json: card
 		else
@@ -21,9 +21,8 @@ class Api::CardsController < ApplicationController
 
 	def update
 		card = Card.find(params[:id])
-		
 		if card.update(card_params)
-			formatValue(card)
+			# formatValue(card)
 			card.save
 			render json: card
 		else
@@ -45,12 +44,12 @@ class Api::CardsController < ApplicationController
 			params.require(:data).permit(:brand, :year, :first_name, :last_name, :card_number, :rookie, :value, :image_url, :orientation)
 		end
 
-		def formatValue(card)
-			valueAfterDecemal = card.value.split('.')[1]
-			if valueAfterDecemal && valueAfterDecemal.length === 1
-				card.value += "0"
-			elsif !valueAfterDecemal
-				card.value += ".00"
-			end
-		end
+		# def formatValue(card)
+		# 	valueAfterDecemal = card.value.split('.')[1]
+		# 	if valueAfterDecemal && valueAfterDecemal.length === 1
+		# 		card.value += "0"
+		# 	elsif !valueAfterDecemal
+		# 		card.value += ".00"
+		# 	end
+		# end
 end

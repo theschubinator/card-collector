@@ -20,7 +20,7 @@ export const cardFormReducer = (state=defaultState, action) => {
 		case 'UPDATE_CARD_FORM':
 			return { ...state, [action.payload.name]: action.payload.value };
 		case 'UPDATE_FOR_EDIT':
-			return { ...action.payload, errors: [], type:'edit' };
+			return { ...action.payload, value:(action.payload.value / 100).toFixed(2), errors: [], type:'edit' };
 		case 'TOGGLE_NEW_CARD_MODAL':
 			return { ...state, showModal: !state.showModal };
 		case 'ADD_ERROR_MESSAGE':

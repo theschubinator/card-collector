@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20180326180009) do
     t.string "year"
     t.string "first_name"
     t.string "card_number"
-    t.string "value"
+    t.integer "value"
     t.boolean "rookie", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -5,7 +5,7 @@ class CreateCards < ActiveRecord::Migration[5.1]
 			t.string :year
 			t.string :player
 			t.string :card_number
-			t.string :value
+			t.integer :value
 			t.boolean :rookie, default: false
       t.timestamps
     end

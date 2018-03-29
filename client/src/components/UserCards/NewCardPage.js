@@ -74,7 +74,6 @@ const validateInputs = (name, value, props)  => {
 }
 
 const NewCardPage = (props) => {
-
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		props.clearErrors();
@@ -83,6 +82,7 @@ const NewCardPage = (props) => {
 
 	const handleChange = (e) => {
 		let { name, value } = e.target;
+		
 		validateInputs(name, value, props);
 	};
 
@@ -91,7 +91,9 @@ const NewCardPage = (props) => {
 	const setDefaultYear = props.cardForm.year ? 
 			<option value={props.cardForm.year} defaultValue>{props.cardForm.year}</option> 
 		: <option value="" defaultValue>Year</option>
+
 	
+
 	return (
 		<div className="container card-form">
 			{ props.cardForm.type ==="edit" ? <h1>Edit Card</h1> : <h1>Add Card</h1> }
@@ -144,7 +146,7 @@ const NewCardPage = (props) => {
 						<div className="col-sm-5">
 							<input 
 								onChange={handleChange} 
-								type="text" value={props.cardForm.value} 
+								type="text" value={ props.cardForm.value } 
 								name="value" 
 								placeholder="$Value" 
 							/>

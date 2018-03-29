@@ -7,8 +7,8 @@ const url = 'http://localhost:3001'
 //ACTION CREATORS
 
 const loadUser = (user) => ({
-	type: 'LOG_IN_USER',
-	payload: user
+		type: 'LOG_IN_USER',
+		payload: user
 })
 
 export const logOutUser = () => {

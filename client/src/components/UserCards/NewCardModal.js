@@ -27,7 +27,8 @@ const NewCardModal = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-	toggles: state.toggles
+	toggles: state.toggles,
+	user: state.user
 });
 
 export default connect(mapStateToProps, { toggleNewCardModal, clearFormData })(NewCardModal);
