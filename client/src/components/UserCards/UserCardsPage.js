@@ -97,6 +97,12 @@ const filterByRookie = (cards, filters, filteredType, organizeType) => {
 	// return organizeBy(filteredCards, filteredType, organizeType);
 }
 
+const filterByYear = (cards, filters, filteredType, organizeType) => {
+	const filteredCards = filterBy(cards, filters);
+	return filteredCards.length > 0 ? organizeBy(filteredCards, filteredType, organizeType) : filteredCards
+	// return organizeBy(filteredCards, filteredType, organizeType);
+}
+
 const filterCards = (cards, filters) => {
 	switch(filters.filter) {
 		case 'created_at':
@@ -110,7 +116,7 @@ const filterCards = (cards, filters) => {
 		case 'value':
 			return filterByValue(cards, filters, 'value', 'last_name');
 		case 'year':
-		return filterByValue(cards, filters, 'year', 'last_name');
+		return filterByYear(cards, filters, 'year', 'last_name');
 	}
 }
 	

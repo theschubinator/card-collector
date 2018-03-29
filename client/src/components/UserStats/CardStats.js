@@ -14,7 +14,7 @@ const cardValue = (cards) => {
 			total += parseFloat(card.value)
 		}
 	})
-	return total.toFixed(2);
+	return parseFloat(total / 100).toFixed(2);
 }
 
 class CardStats extends Component {
