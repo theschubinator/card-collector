@@ -41,11 +41,11 @@ class CardStats extends Component {
 				<span id="select">Sort By:
 					<select onChange={this.handleChange}>
 						<option value="created_at descending" defaultValue>Newly Added</option>
-						<option value="brand ascending">Brand</option>
-						<option value="last_name ascending">Player</option>
-						<option value="rookie ascending">Rookie</option>
-						<option value="value descending">Value</option>
-						<option value="year ascending">Year</option>
+						<option value="brand ascending year">Brand</option>
+						<option value="last_name ascending year">Player</option>
+						<option value="rookie ascending last_name">Rookie</option>
+						<option value="value descending last_name">Value</option>
+						<option value="year ascending last_name">Year</option>
 					</select>
 					<a>Advanced Filters</a>
 				</span>

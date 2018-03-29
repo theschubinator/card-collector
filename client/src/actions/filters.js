@@ -1,8 +1,7 @@
 export const sortBy = (filter) => {
-	const filterType = filter.split(' ')[0];
-	const order = filter.split(' ')[1];
+	const filters = filter.split(' ');
 	return {
 		type:'SET_FILTER',
-		payload: { filter: filterType, order: order }
+		payload: { filterBy: filters[0], orderBy: filters[1], organizedBy: filters[2] }
 	}
 };

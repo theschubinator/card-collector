@@ -1,7 +1,7 @@
-export const filterReducer = (state = {filter: 'created_at', order:'ascending'}, action) => {
+export const filterReducer = (state = {filterBy: 'created_at', orderBy:'ascending'}, action) => {
 	switch(action.type) {
 		case 'SET_FILTER':
-			return { filter: action.payload.filter, order: action.payload.order };
+			return action.payload;
 		default:
 			return state;
 	}
