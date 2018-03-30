@@ -1,0 +1,29 @@
+.home {
+	text-align: center;
+}
+
+.notice {
+	background-color: #ed5757;
+	padding: 15px;
+	color: white;
+}
+
+.notice .credintials {
+	border-top: 3px solid #c4b8b8;
+	padding-top: 20px;
+}
+
+.notice .credintials p {
+	margin: 0 100px 0px 100px;
+	display: inline-block;
+}
+
+button a {
+	text-decoration: none;
+	color: black;
+}
+
+button a:hover {
+	text-decoration: none;
+	color: black;
+}

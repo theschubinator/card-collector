@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 		resources :users, only: [:index, :create] do
 			resources :cards, only: [:index, :create, :update, :destroy]
 		end
+		get '/cards', to: 'cards#all'
 	end
 	post 'auth_user' => 'authentication#authenticate_user'
 end

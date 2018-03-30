@@ -8,6 +8,10 @@ class Api::CardsController < ApplicationController
 		end
 	end
 
+	def all
+		render json: Card.all
+	end
+
 	def create
 		user = User.find(params[:user_id])
 		card = Card.new(card_params)

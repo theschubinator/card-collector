@@ -6,9 +6,11 @@ import { loginFormReducer } from './reducers/LoginFormReducer';
 import { cardFormReducer } from './reducers/CardFormReducer';
 import { toggleReducer } from './reducers/ToggleReducer';
 import { filterReducer } from './reducers/FilterReducer';
+import { CardsReducer } from './reducers/CardsReducer';
 
 const reducers = combineReducers({
 	user: userReducer,
+	cards: CardsReducer,
 	loginForm: loginFormReducer,
 	cardForm: cardFormReducer,
 	toggles: toggleReducer,

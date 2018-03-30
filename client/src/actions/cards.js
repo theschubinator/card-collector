@@ -27,6 +27,11 @@ const updateCard = (card) => {
 	}
 }
 
+const setAllCards = (cards) => ({
+	type: 'LOAD_ALL_CARDS',
+	payload: cards
+})
+
 // ASYNC Actions
 
 export const saveCard = (data, user_id, history, image) => {
@@ -69,7 +74,13 @@ export const saveCard = (data, user_id, history, image) => {
 			.catch((error) => { debugger })
 		}
 	}
-
 	return data.type === "edit" ? editCardRequest() : newCardRequest();
-
 };
+
+export const loadAllCards = () => {
+	return dispatch => {
+		axios.get(`${url}/api/cards`)
+		.then((response) => dispatch(setAllCards(response.data)))
+		.catch((error) => console.log(error))
+	}
+}
