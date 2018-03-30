@@ -52,7 +52,7 @@ export const saveCard = (data, user_id, history, image) => {
 	
 	const newCardRequest = () => {
 		return dispatch => {
-			axios.post(`${url}/api/users/${user_id}/cards`, { data })
+			axios.post(`/api/users/${user_id}/cards`, { data })
 			.then((response) => {
 				dispatch(addCard(response.data));
 				dispatch(toggleNewCardModal());
@@ -65,7 +65,7 @@ export const saveCard = (data, user_id, history, image) => {
 
 	const editCardRequest = () => {
 		return dispatch => {
-			axios.put(`${url}/api/users/${user_id}/cards/${data.id}`, { data })
+			axios.put(`/api/users/${user_id}/cards/${data.id}`, { data })
 			.then((response ) =>  {
 				dispatch(updateCard(response.data))
 				dispatch(toggleNewCardModal());
@@ -79,7 +79,7 @@ export const saveCard = (data, user_id, history, image) => {
 
 export const loadAllCards = () => {
 	return dispatch => {
-		axios.get(`${url}/api/cards`)
+		axios.get(`/api/cards`)
 		.then((response) => dispatch(setAllCards(response.data)))
 		.catch((error) => console.log(error))
 	}

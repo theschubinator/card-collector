@@ -24,14 +24,14 @@ const removeCardFromState = (card) => ({
 
 // ASYNC ACTIONS //
 
-export const loadAllUsers = () => {
-	axios.get(`${url}/api/users`)
-		.then((response) => {debugger})
-}
+// export const loadAllUsers = () => {
+// 	axios.get(`${url}/api/users`)
+// 		.then((response) => {debugger})
+// }
 
 export const logInUser = (user, history) => {
 	return dispatch => {
-		axios.post(`${url}/auth_user`, { user })
+		axios.post(`/auth_user`, { user })
 		.then((response) => {
 			dispatch(loadUser(response.data.user))
 			if(!localStorage.getItem('token')) {
@@ -46,7 +46,7 @@ export const logInUser = (user, history) => {
 
 export const signUpUser = (user, history) => {
 	return dispatch => {
-		axios.post(`${url}/api/users`, { user })
+		axios.post(`/api/users`, { user })
 		.then(response => { 
 			dispatch(loadUser(response.data.user))
 			localStorage.setItem('token', response.data.auth_token)
@@ -59,7 +59,7 @@ export const signUpUser = (user, history) => {
 
 export const deleteCard = (user_id, card_id, history) => {
 	return dispatch => {
-		axios.delete(`${url}/api/users/${user_id}/cards/${card_id}`)
+		axios.delete(`/api/users/${user_id}/cards/${card_id}`)
 		.then((response => dispatch(removeCardFromState(response.data))))
 		history.push(`/${user_id}/cards`)
 	}
