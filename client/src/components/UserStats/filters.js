@@ -15,7 +15,7 @@ const filterBy = (cards, filters) => {
 }
 
 const organizeBy = (cards, filters) => {
-	const { filterBy, orderBy, organizedBy } = filters;
+	const { filterBy, organizedBy, organizedOrder } = filters;
 	//return cards as is if no additional filtering is required...
 	if (!organizedBy) { return cards }
 
@@ -29,7 +29,7 @@ const organizeBy = (cards, filters) => {
 			// when we run out of current matches, sort the current array of matches
 			// and add them to our finalArray.
 			currentType = currentCard[filterBy];
-			finalArray = finalArray.concat(sortOrder(currentArray, organizedBy, orderBy));
+			finalArray = finalArray.concat(sortOrder(currentArray, organizedBy, organizedOrder));
 			currentArray = [currentCard];
 
 		} else if(i === cards.length-1) {
@@ -38,12 +38,12 @@ const organizeBy = (cards, filters) => {
 			// add it to the finalArray
 			if (currentType === currentCard[filterBy]) {
 				currentArray = currentArray.concat(currentCard);
-				finalArray = finalArray.concat(sortOrder(currentArray, organizedBy, orderBy));
+				finalArray = finalArray.concat(sortOrder(currentArray, organizedBy, organizedOrder));
 			} else {
 				//if the final card does not match the current match
 				//sort currentArray and add to finalArray
 				//and finally... add the finalCard to the array
-				finalArray = finalArray.concat(sortOrder(currentArray, organizedBy, orderBy));
+				finalArray = finalArray.concat(sortOrder(currentArray, organizedBy, organizedOrder));
 				finalArray = finalArray.concat(currentCard);
 			}
 		} else {

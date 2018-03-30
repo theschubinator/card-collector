@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { sortBy } from '../../actions/filters';
 import { toggleAdvancedFilter } from '../../actions/toggles';
-import AdvancedFilterModal from './AdvancedFilterModal';
+// import AdvancedFilterModal from './AdvancedFilterModal';
 
 
 const rookieCards = (cards) => {
@@ -29,9 +29,9 @@ class CardStats extends Component {
 		this.props.sortBy(e.target.value);
 	}
 
-handleClick = () => {
-	this.props.toggleAdvancedFilter()
-}	
+// handleClick = () => {
+// 	this.props.toggleAdvancedFilter()
+// }	
 
 	render() {
 		return (
@@ -47,14 +47,14 @@ handleClick = () => {
 				<span id="select">Sort By:
 					<select onChange={this.handleChange}>
 						<option value="created_at descending" defaultValue>Newly Added</option>
-						<option value="brand ascending year">Brand</option>
-						<option value="last_name ascending year">Player</option>
-						<option value="rookie ascending last_name">Rookie</option>
-						<option value="value descending last_name">Value</option>
-						<option value="year ascending last_name">Year</option>
+						<option value="brand ascending year ascending">Brand</option>
+						<option value="last_name ascending year ascending">Player</option>
+						<option value="rookie ascending last_name ascending">Rookie</option>
+						<option value="value descending last_name ascending">Value</option>
+						<option value="year ascending last_name ascending">Year</option>
 					</select>
-					<a onClick={this.handleClick}>Advanced Filters</a>
-					<AdvancedFilterModal />
+					{/* <a onClick={this.handleClick}>Advanced Filters</a>
+					<AdvancedFilterModal /> */}
 				</span>
 			</h4>		
 		</div>
