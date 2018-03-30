@@ -11,6 +11,7 @@ import { toggleNewCardModal } from '../actions/toggles'
 import cardCollectionNavImage from '../media/cardCollectionNavImage.png';
 import '../styles/navbar.css';
 
+
 const NavBar = (props) => {
 	const handleLogOut = () => {
 		props.logOutUser();
