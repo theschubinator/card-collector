@@ -2,6 +2,7 @@ import React from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import PopUpModal from './SignIn/PopUpModal';
 import NewCardModal from './UserCards/NewCardModal';
@@ -16,6 +17,7 @@ const NavBar = (props) => {
 	const handleLogOut = () => {
 		props.logOutUser();
 		localStorage.removeItem('token');
+		props.history.push("/");
 	}
 
 	const showLoginModal = (e) => {
@@ -83,4 +85,5 @@ const mapStateToProps = (state) => {
 	}
 }
 
+export const NavBarWithRouter = withRouter(connect(mapStateToProps, { logOutUser, toggleLoginModal, toggleNewCardModal })(NavBar))
 export default connect(mapStateToProps, { logOutUser, toggleLoginModal, toggleNewCardModal })(NavBar);

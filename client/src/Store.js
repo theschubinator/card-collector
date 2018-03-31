@@ -7,6 +7,7 @@ import { cardFormReducer } from './reducers/CardFormReducer';
 import { toggleReducer } from './reducers/ToggleReducer';
 import { filterReducer } from './reducers/FilterReducer';
 import { CardsReducer } from './reducers/CardsReducer';
+import { authorizedReducer } from './reducers/AuthorizedReducer';
 
 const reducers = combineReducers({
 	user: userReducer,
@@ -14,7 +15,8 @@ const reducers = combineReducers({
 	loginForm: loginFormReducer,
 	cardForm: cardFormReducer,
 	toggles: toggleReducer,
-	filters: filterReducer
+	filters: filterReducer,
+	auth: authorizedReducer
 });
 
 export default createStore(

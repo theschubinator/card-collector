@@ -21,6 +21,11 @@ const removeCardFromState = (card) => ({
 	payload: card
 })
 
+export const authUser = (authorized) => ({
+	type: 'AUTH_USER',
+	payload: authorized
+})
+
 
 // ASYNC ACTIONS //
 
@@ -35,6 +40,7 @@ export const logInUser = (user, history) => {
 		.then((response) => {
 			dispatch(loadUser(response.data.user))
 			if(!localStorage.getItem('token')) {
+				dispatch(authUser(true));
 				localStorage.setItem('token', response.data.auth_token);
 				dispatch(toggleLoginModal());
 				history.push(`/${response.data.user.id}/cards`)
