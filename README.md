@@ -18,7 +18,7 @@ React application and where all the Magic happends!
 	 2. Click on the Cone or download button above and copy the github link to your clipboard. 
 	 3. Then open your terminal on your local machine and navigate to the directory where 
 	    you would like to place the repo. 
-	 4. In the terminal type, ```clone git@github.com:theschubinator/card-collector.git```
+	 4. In the terminal type, gitclone git@github.com:theschubinator/card-collector.git
 	 5. Next type cd card-collector and open your favorite code editor to begin working.  
 
 ### Getting the Application Running in Development 
