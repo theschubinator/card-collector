@@ -51,6 +51,7 @@ export const logInUser = (user, history) => {
 }
 
 export const signUpUser = (user, history) => {
+	debugger
 	return dispatch => {
 		axios.post(`/api/users`, { user })
 		.then(response => { 
