@@ -13,8 +13,9 @@ The React application resides withint the /client directory. Inside ofR /client/
 	 1. Go ahead an fork the repo from above. 
 	 2. Click on the Cone or download button above and copy the github link to your clipboard. 
 	 3. Then open your terminal on your local machine and navigate to the directory where 
-	    you would like to place the repo. 3. In the terminal type, gitclone git@github.com:theschubinator/card-collector.git 
-	 4. Next type cd card-collector and open your favorite code editor to begin working.  
+	    you would like to place the repo. 
+	 4. In the terminal type, gitclone git@github.com:theschubinator/card-collector.git 
+	 5. Next type cd card-collector and open your favorite code editor to begin working.  
 ```
 
 ### Getting the Application Running in Development
