@@ -5,25 +5,28 @@ An application to help a user keep track of their sports cards. You can track yo
 These instructions will get you a copy of the project up and running on your local machine for developement.
 
 ### Understanding the File Structure
-The main Rails applicaiton resides within /app directory. Here you will have access to the controllers, models, and other important resources
-The React application resides withint the /client directory. Inside ofR /client/src you will find all the components of the React application and where all the Magic happends!
+###### Rails
+The main Rails applicaiton resides within /app directory. 
+Here you will have access to the controllers, models, and other important resources
+###### React
+The React application resides withint the /client directory. 
+Inside ofR /client/src you will find all the components of the 
+React application and where all the Magic happends!
 
 ### Forking the Repo
-```
 	 1. Go ahead an fork the repo from above. 
 	 2. Click on the Cone or download button above and copy the github link to your clipboard. 
 	 3. Then open your terminal on your local machine and navigate to the directory where 
 	    you would like to place the repo. 
-	 4. In the terminal type, gitclone git@github.com:theschubinator/card-collector.git 
+	 4. In the terminal type, ```clone git@github.com:theschubinator/card-collector.git```
 	 5. Next type cd card-collector and open your favorite code editor to begin working.  
-```
 
-### Getting the Application Running in Development
+### Getting the Application Running in Development 
 First lets install the necessary gem files. In the root of your project, type ...
 ```
 bundle install
 ```
-Next, lets setup our Client-Side React. Again from the root of your directory type ...
+Next, lets setup our Client-Side React Application. Again from the root of your directory type ...
 ```
 cd client && npm install
 ```
